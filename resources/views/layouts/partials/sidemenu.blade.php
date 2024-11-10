@@ -56,6 +56,16 @@
                             <small class="m-0 p-0 d-sm-none d-sm-block">Pelajaran</small>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('scorecollection.index') }}"
+                            class="nav-link text-center text-sm-start text-white
+                    {{ Route::currentRouteName() == 'scorecollection.index' ? 'active' : '' }}">
+                            <i class="bi bi-people menu-icon"></i>
+                            <span class="ms-2 d-none d-sm-inline">Nilai Siswa</span>
+                            <br class="d-sm-none d-inline">
+                            <small class="m-0 p-0 d-sm-none d-sm-block">Nilai</small>
+                        </a>
+                    </li>
 
                     {{-- <li class="nav-item">
                         <a href="{{ route('studentparent.index') }}"

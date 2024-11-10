@@ -25,4 +25,9 @@ class Student extends Model
     {
         return $this->belongsTo(Group::class);
     }
+
+    public function scorecollection()
+    {
+        return $this->hasMany(ScoreCollection::class);
+    }
 }

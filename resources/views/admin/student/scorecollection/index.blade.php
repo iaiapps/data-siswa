@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Data Kelas')
+@section('title', 'Data Mata Pelajaran')
 
 @section('content')
 
-    <a href="{{ route('group.create') }}" class="btn btn-primary mb-3">Tambah Kelas</a>
+    <a href="{{ route('scorecollection.create') }}" class="btn btn-primary mb-3">Tambah Nilai Pelajaran</a>
 
     <div class="card rounded p-3">
         <div class="table-responsive">
@@ -13,32 +13,36 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Kelas</th>
-                        <th scope="col">Jumlah Siswa</th>
+
+                        <th scope="col">Nama Siswa</th>
+                        @foreach ($subjects as $subject)
+                            <th>{{ $subject->pelajaran }}</th>
+                        @endforeach
+
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($groups as $group)
+                    @foreach ($students as $student)
                         <tr>
-                            <td>{{ $group->id }}</td>
-                            <td>{{ $group->kelas }}</td>
-                            <td>
-                                <button class="btn btn-outline-primary btn-sm">
-                                    {{ $group->student->count() ?? 'belum ditentukan' }}
-                                </button>
-                                <a href="{{ route('showstudentgroup', ['id' => $group->id]) }}"
-                                    class="btn btn-sm btn-primary">lihat
-                                    siswa</a>
-                                <a href="{{ route('addstudentgroup', ['id' => $group->id]) }}"
-                                    class="btn btn-warning btn-sm">edit
-                                    siswa</a>
-                            </td>
-                            <td>
-                                <a href="{{ route('group.edit', $group->id) }}" class="btn btn-warning btn-sm">edit
-                                    kelas</a>
+                            <td>{{ $student->id }}</td>
+                            <td>{{ $student->name }}</td>
+                            @foreach ($subjects as $subject)
+                                @if (!$student->scorecollection->where('subject_id', $subject->id)->isEmpty())
+                                    {{-- <td>{{ $student->scorecollection->where('subject_id', $subject->id) }}</td> --}}
+                                    <td>cek</td>
+                                @else
+                                    <td>belum diisi</td>
+                                @endif
+                            @endforeach
 
-                                <form method="POST" action="{{ route('group.destroy', $group->id) }}" class="d-inline"
+
+                            <td>
+                                <a href="{{ route('scorecollection.show', $student->id) }}"
+                                    class="btn btn-primary btn-sm">lihat
+                                    nilai</a>
+
+                                <form method="POST" action="{{ route('student.destroy', $student->id) }}" class="d-inline"
                                     onsubmit="return confirm('Apakah anda yakin untuk menghapus data ?');">
                                     @csrf
                                     @method('DELETE')

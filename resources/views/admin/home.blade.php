@@ -5,7 +5,7 @@
 @section('content')
     <div class="card rounded p-3">
         <p class="fs-4 text-center m-0">
-            Selamat Datang di Sistem Informasi Penilaian Wafa SDIT Harapan Umat Jember
+            Selamat Datang Pusat Data Siswa SDIT Harapan Umat Jember
         </p>
     </div>
 
@@ -58,24 +58,5 @@
         </div>
     </div>
 
-    <div class="card rounded p-3">
-        <ul class="list-group text-center">
-            <li class="list-group-item">Penilian BTAQ atau Wafa dalam 1 semester mencakup Penilaian Harian, Sumatif Tengah
-                Semester (STS)
-                dan Sumatif Akhir Semester (SAS)</li>
 
-            <li class="list-group-item">
-                Penilaian Harian terdiri dari beberapa komponen penilaian, diisi cukup sekali selama 1 semester yaitu rerata
-                dari penilaian tersebut
-            </li>
-            <li class="list-group-item">
-                Penilaian STS dan SAS diisi 1x selama 1 semester
-            </li>
-        </ul>
-
-
-        <p class="mt-3 text-center"> Jika ada pertanyaan terkait penilaian BTAQ atau Wafa bisa menghubungi Waka Keagamaan
-            atau Admin
-            aplikasi</p>
-    </div>
 @endsection

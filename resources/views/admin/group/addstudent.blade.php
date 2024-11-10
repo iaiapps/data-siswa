@@ -2,17 +2,30 @@
 
 @section('title', 'Data Siswa')
 @section('content')
+
+    <a href="{{ url()->previous() }}" class="btn btn-primary mb-3">Kembali</a>
+
     <div class="card rounded p-3">
         <form action="{{ route('storestudentgroup') }}" method="POST">
             @csrf
             @method('PUT')
-            <div class="input-group mb-3">
+            {{-- <div class="input-group mb-3">
                 <span class="input-group-text bg-secondary-subtle">Pilih Kelas</span>
                 <select name="group_id" id="group" class="form-control">
                     <option disabled selected>--- pilih kelas ---</option>
                     @foreach ($groups as $group)
                         <option value="{{ $group->id }}">{{ $group->kelas }}</option>
                     @endforeach
+                </select>
+                <button type="submit" class="btn btn-primary">simpan</button>
+            </div> --}}
+
+            <div class="input-group mb-3">
+                <span class="input-group-text bg-secondary-subtle">Pilih Kelas</span>
+                <select name="group_id" id="group" class="form-control">
+                    <option value="{{ $groups->where('id', $id)->first()->id }}">
+                        {{ $groups->where('id', $id)->first()->kelas }}</option>
+
                 </select>
                 <button type="submit" class="btn btn-primary">simpan</button>
             </div>

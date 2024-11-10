@@ -79,12 +79,11 @@ class GroupController extends Controller
         return view('admin.group.showstudent', compact('students', 'group'));
     }
 
-    public function addstudentgroup()
+    public function addstudentgroup($id)
     {
         $students = Student::all();
         $groups = Group::all();
-        // dd($students);
-        return view('admin.group.addstudent', compact('students', 'groups'));
+        return view('admin.group.addstudent', compact('students', 'groups', 'id'));
     }
     public function storestudentgroup(Request $request)
     {

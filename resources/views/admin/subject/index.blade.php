@@ -3,10 +3,7 @@
 @section('title', 'Data Mata Pelajaran')
 
 @section('content')
-
-    {{-- @dd(Auth::subject()->hasRole('admin')) --}}
     <a href="{{ route('subject.create') }}" class="btn btn-primary mb-3">Tambah Pelajaran</a>
-    {{-- <a href="{{ route('subject.create') }}" class="btn btn-primary mb-3">tambah data guru</a> --}}
 
     <div class="card rounded p-3">
         <div class="table-responsive">

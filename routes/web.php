@@ -6,10 +6,12 @@ use App\Http\Controllers\GroupController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ScoreCollectionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentParentController;
 use App\Http\Controllers\SubjectController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,7 +27,7 @@ Route::middleware('auth')->group(function () {
         // group
         Route::resource('group', GroupController::class);
         Route::get('showstudentgroup/{id}', [GroupController::class, 'showstudentgroup'])->name('showstudentgroup');
-        Route::get('addstudentgroup', [GroupController::class, 'addstudentgroup'])->name('addstudentgroup');
+        Route::get('addstudentgroup/{id}', [GroupController::class, 'addstudentgroup'])->name('addstudentgroup');
         Route::put('studentgroup', [GroupController::class, 'storestudentgroup'])->name('storestudentgroup');
 
         Route::resource('student', StudentController::class);
@@ -37,6 +39,9 @@ Route::middleware('auth')->group(function () {
         Route::post('uploadfoto', [DocumentController::class, 'store'])->name('storefoto');
         Route::get('view_foto/{document}', [DocumentController::class, 'show'])->name('viewfoto');
         Route::delete('view_foto/{document}', [DocumentController::class, 'destroy'])->name('deletefoto');
+
+        // kumpulan nilai
+        Route::resource('scorecollection', ScoreCollectionController::class);
     });
 
     Route::middleware('role:siswa')->group(function () {
