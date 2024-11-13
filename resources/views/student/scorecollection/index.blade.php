@@ -15,6 +15,7 @@
                         <th scope="col">#</th>
 
                         <th scope="col">Nama Siswa</th>
+                        <th scope="col">Kelas</th>
                         @foreach ($subjects as $subject)
                             <th>{{ $subject->pelajaran }}</th>
                         @endforeach
@@ -27,9 +28,9 @@
                         <tr>
                             <td>{{ $student->id }}</td>
                             <td>{{ $student->name }}</td>
+                            <td>{{ $student->group->kelas ?? 'belum ditentukan' }}</td>
                             @foreach ($subjects as $subject)
                                 @if (!$student->scorecollection->where('subject_id', $subject->id)->isEmpty())
-                                    {{-- <td>{{ $student->scorecollection->where('subject_id', $subject->id) }}</td> --}}
                                     <td>cek</td>
                                 @else
                                     <td>belum diisi</td>
@@ -39,8 +40,7 @@
 
                             <td>
                                 <a href="{{ route('scorecollection.show', $student->id) }}"
-                                    class="btn btn-primary btn-sm">lihat
-                                    nilai</a>
+                                    class="btn btn-primary btn-sm">lihat</a>
 
                                 <form method="POST" action="{{ route('student.destroy', $student->id) }}" class="d-inline"
                                     onsubmit="return confirm('Apakah anda yakin untuk menghapus data ?');">

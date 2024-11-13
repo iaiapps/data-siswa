@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\StudentParent;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\StudentParent;
+use Illuminate\Support\Facades\Auth;
 
 class StudentParentController extends Controller
 {
@@ -12,8 +14,8 @@ class StudentParentController extends Controller
      */
     public function index()
     {
-        $studentparents = StudentParent::all();
-        return view('admin.parent.index', compact('studentparents'));
+        // $studentparents = StudentParent::all();
+        // return view('admin.parent.index', compact('studentparents'));
     }
 
     /**
@@ -22,7 +24,7 @@ class StudentParentController extends Controller
     public function create(Request $request)
     {
         $id = $request->id;
-        return view('admin.parent.create', compact('id'));
+        return view('parent.create', compact('id'));
     }
 
     /**
@@ -33,7 +35,16 @@ class StudentParentController extends Controller
         $id = $request->student_id;
         $data = $request->all();
         StudentParent::create($data);
-        return redirect()->route('student.show', $id);
+
+        // untuk cek user dan hasRole
+        /** @var \App\Models\User */
+        $user = Auth::user();
+
+        if ($user->hasRole('admin')) {
+            return redirect()->route('student.show', $id);
+        } elseif ($user->hasRole('siswa')) {
+            return redirect()->route('biodata.index');
+        }
     }
 
     /**
@@ -47,17 +58,29 @@ class StudentParentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(StudentParent $studentParent)
+    public function edit(StudentParent $studentparent)
     {
-        //
+        return view('parent.edit', compact('studentparent'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, StudentParent $studentParent)
+    public function update(Request $request, StudentParent $studentparent)
     {
-        //
+        $id = $studentparent->student_id;
+        $data = $request->all();
+        $studentparent->update($data);
+
+        // untuk cek user dan hasRole
+        /** @var \App\Models\User */
+        $user = Auth::user();
+
+        if ($user->hasRole('admin')) {
+            return redirect()->route('student.show', $id);
+        } elseif ($user->hasRole('siswa')) {
+            return redirect()->route('biodata.index');
+        }
     }
 
     /**

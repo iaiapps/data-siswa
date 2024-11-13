@@ -23,7 +23,7 @@ class DocumentController extends Controller
      */
     public function create($id)
     {
-        return view('admin.student.document.create', compact('id'));
+        return view('student.document.create', compact('id'));
     }
 
     /**
@@ -66,7 +66,7 @@ class DocumentController extends Controller
      */
     public function show(Document $document)
     {
-        return view('admin.student.view_foto', compact('document'));
+        return view('student.view_foto', compact('document'));
     }
 
     /**
@@ -103,7 +103,7 @@ class DocumentController extends Controller
     // upload document ini nanti untuk student saja
     public function uploadfoto($id)
     {
-        return view('admin.student.document.create', compact('id'));
+        return view('student.document.create', compact('id'));
     }
 
     public function storefoto(Request $request)
@@ -141,6 +141,6 @@ class DocumentController extends Controller
     // viewfoto
     public function viewfoto(Document $document)
     {
-        return view('admin.student.view_foto', compact('document'));
+        return view('student.view_foto', compact('document'));
     }
 }

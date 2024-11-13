@@ -16,7 +16,7 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::all();
-        return view('admin.student.index', compact('students'));
+        return view('student.index', compact('students'));
     }
 
     /**
@@ -27,7 +27,7 @@ class StudentController extends Controller
         $user_id = $request->user_id;
         $student = Student::where('user_id', $user_id)->first();
         // dd($student);
-        return view('admin.student.create', compact('student'));
+        return view('student.create', compact('student'));
     }
 
     /**
@@ -47,7 +47,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        return view('admin.student.show', compact('student'));
+        return view('student.show', compact('student'));
     }
 
     /**
@@ -56,7 +56,7 @@ class StudentController extends Controller
     public function edit(Student $student)
     {
         // dd($student);
-        return view('admin.student.edit', compact('student'));
+        return view('student.edit', compact('student'));
     }
 
     /**
@@ -81,7 +81,17 @@ class StudentController extends Controller
     {
         $id = Auth::user()->id;
         $student = Student::where('user_id', $id)->first();
-        // dd($id);
         return view('student.show', compact('student'));
+    }
+    public function biodataEdit($id)
+    {
+        $student = Student::find($id);
+        return view('student.edit', compact('student'));
+    }
+    public function biodataStore(Request $request, Student $biodata)
+    {
+        $data = $request->all();
+        $biodata->update($data);
+        return redirect()->route('biodata.index');
     }
 }

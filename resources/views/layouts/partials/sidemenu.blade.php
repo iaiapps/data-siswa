@@ -39,7 +39,7 @@
                         <a href="{{ route('group.index') }}"
                             class="nav-link text-center text-sm-start text-white
                     {{ Route::currentRouteName() == 'group.index' ? 'active' : '' }}">
-                            <i class="bi bi-people menu-icon"></i>
+                            <i class="bi bi-easel menu-icon"></i>
                             <span class="ms-2 d-none d-sm-inline">Kelas</span>
                             <br class="d-sm-none d-inline">
                             <small class="m-0 p-0 d-sm-none d-sm-block">kelas</small>
@@ -50,7 +50,7 @@
                         <a href="{{ route('subject.index') }}"
                             class="nav-link text-center text-sm-start text-white
                     {{ Route::currentRouteName() == 'subject.index' ? 'active' : '' }}">
-                            <i class="bi bi-people menu-icon"></i>
+                            <i class="bi bi-journal-bookmark menu-icon"></i>
                             <span class="ms-2 d-none d-sm-inline">Pelajaran</span>
                             <br class="d-sm-none d-inline">
                             <small class="m-0 p-0 d-sm-none d-sm-block">Pelajaran</small>
@@ -60,7 +60,7 @@
                         <a href="{{ route('scorecollection.index') }}"
                             class="nav-link text-center text-sm-start text-white
                     {{ Route::currentRouteName() == 'scorecollection.index' ? 'active' : '' }}">
-                            <i class="bi bi-people menu-icon"></i>
+                            <i class="bi bi-123 menu-icon"></i>
                             <span class="ms-2 d-none d-sm-inline">Nilai Siswa</span>
                             <br class="d-sm-none d-inline">
                             <small class="m-0 p-0 d-sm-none d-sm-block">Nilai</small>
@@ -91,7 +91,7 @@
                 </ul>
             @break
 
-            @case('guru')
+            {{-- @case('guru')
                 <ul class="nav nav-pills pb-2 navbar-nav-scroll flex-column ">
                     <li class="nav-item">
                         <a href="{{ route('home') }}"
@@ -149,8 +149,7 @@
                         </li>
                     @endif
                 </ul>
-            @break
-
+            @break --}}
             @case('siswa')
                 <ul class="nav nav-pills pb-2 navbar-nav-scroll flex-column ">
                     <li class="nav-item">
@@ -164,9 +163,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('biodata') }}"
+                        <a href="{{ route('biodata.index') }}"
                             class="nav-link text-center text-sm-start text-white
-                    {{ Route::currentRouteName() == 'biodata' ? 'active' : '' }}">
+                    {{ Route::currentRouteName() == 'biodata.index' ? 'active' : '' }}">
                             <i class="bi bi-person-gear menu-icon"></i>
                             <span class="ms-2 d-none d-sm-inline">Biodata Siswa</span>
                             <br class="d-sm-none d-inline">
