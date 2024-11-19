@@ -45,9 +45,8 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::middleware('role:admin|siswa')->group(function () {
-
         // ortu siswa
-        Route::resource('studentparent', StudentParentController::class);
+        Route::resource('studentparent', StudentParentController::class)->except('index');
 
         // foto/document
         Route::get('uploadfoto/{id}', [DocumentController::class, 'create'])->name('uploadfoto');
@@ -61,5 +60,7 @@ Route::middleware('auth')->group(function () {
         Route::get('biodata', [StudentController::class, 'biodata'])->name('biodata.index');
         Route::get('/biodata/{id}', [StudentController::class, 'biodataEdit'])->name('biodata.edit');
         Route::put('/biodata/{biodata}', [StudentController::class, 'biodataStore'])->name('biodata.update');
+        Route::get('/change-password', [UserController::class, 'changePassword'])->name('password.change');
+        Route::put('/change-password/{pass}', [UserController::class, 'editPassword'])->name('password.edit');
     });
 });

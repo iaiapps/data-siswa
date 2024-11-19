@@ -4,6 +4,9 @@
 @section('content')
 
     <div class="card p-3">
+        @if (($student->address == null) | ($student->rt == null) | ($student->village == null))
+            <div class="alert alert-danger text-center">Data belum lengkap !</div>
+        @endif
         <p class="fs-2 text-center mb-2">Profil Siswa</p>
         <hr class="m-0">
         <div class="row align-items-center">
@@ -48,7 +51,7 @@
                     tua/wali
                 </a> --}}
                 <br>
-                <a href="#" class="btn btn-primary my-1">cetak dokumen</a>
+                {{-- <a href="#" class="btn btn-primary my-1">cetak dokumen</a> --}}
 
             </div>
         </div>

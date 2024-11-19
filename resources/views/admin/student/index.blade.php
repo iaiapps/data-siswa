@@ -14,12 +14,13 @@
                         <tr>
                             <th scope="col">No</th>
                             <th scope="col">Nama</th>
-                            <th scope="col">Jenis Kelamin</th>
+                            {{-- <th scope="col">Jenis Kelamin</th> --}}
                             <th scope="col">Kelas</th>
                             <th scope="col">NIS</th>
                             <th scope="col">NISN</th>
                             <th scope="col">Ayah</th>
                             <th scope="col">Ibu</th>
+                            <th scope="col">Cek</th>
                             <th scope="col">Actions</th>
 
                         </tr>
@@ -29,7 +30,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $student->name }}</td>
-                                <td>{{ $student->gender ?? 'belum ditentukan' }}</td>
+                                {{-- <td>{{ $student->gender ?? 'belum ditentukan' }}</td> --}}
                                 <td>{{ $student->group->kelas ?? 'belum ditentukan' }}</td>
                                 {{-- <td>{{ $student->gender }}</td> --}}
                                 {{-- <td>{{ $student->place_of_birth }}, {{ $student->date_of_birth }}</td> --}}
@@ -37,6 +38,13 @@
                                 <td>{{ $student->nisn ?? 'belum ditentukan' }}</td>
                                 <td>{{ $student->studentparents->nama_ayah ?? 'belum ditentukan' }}</td>
                                 <td>{{ $student->studentparents->nama_ibu ?? 'belum ditentukan' }}</td>
+                                <td>
+                                    @if (($student->address == null) | ($student->rt == null) | ($student->village == null))
+                                        <small class="text-danger">Data belum lengkap !</small>
+                                    @else
+                                        <small class="text-primary">Data lengkap !</small>
+                                    @endif
+                                </td>
                                 <td>
                                     <a href="{{ route('student.show', $student->id) }}" class="btn btn-success btn-sm"><i
                                             class="bi bi-info-circle"></i>

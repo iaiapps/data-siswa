@@ -4,10 +4,13 @@
 @section('content')
 
     <div class="card p-3">
+        @if (($student->address == null) | ($student->rt == null) | ($student->village == null))
+            <div class="alert alert-danger text-center">Data belum lengkap !</div>
+        @endif
         <p class="fs-2 text-center mb-2">Profil Siswa</p>
         <hr class="m-0">
         <div class="row align-items-center">
-            <div class="col-md-3 col-12 text-center">
+            <div class="col-3 text-center">
                 {{-- @dd($student->documents->where('type', 'profil')->first()); --}}
                 @if (is_null($student->documents->where('type', 'profil')->first()))
                     <i class="bi bi-person-circle display-1"></i><br>
@@ -34,14 +37,21 @@
                     </div>
                 @endif
             </div>
-            <div class="col-md-6 col-12">
+            <div class="col-6">
                 <p class="fs-3 m-0">{{ $student->name }} <span class="fs-5">[{{ $student->gender }}]</span></p>
                 <p class="fs-5 m-0">Nomor Induk Siswa Nasional : {{ $student->nisn }}</p>
                 <p class="fs-5 m-0">Nomor Induk Siswa : {{ $student->nis }}</p>
                 <p class="fs-6 m-0">Diterima pada tahun ajaran {{ $student->year ?? 'belum ditentukan' }}</p>
             </div>
-            <div class="col-md-3 col-12">
-                <a href="{{ route('biodata.edit', $student->id) }}" class="btn btn-primary my-1">edit biodata</a>
+            <div class="col-3">
+                <a href="{{ route('student.edit', $student->id) }}" class="btn btn-primary my-1">edit biodata</a>
+                {{-- <a href="{{ route('studentparent.create', ['id' => $student->id]) }}" class="btn btn-primary my-1">edit
+                    data
+                    orang
+                    tua/wali
+                </a> --}}
+                <br>
+                <a href="#" class="btn btn-primary my-1">cetak dokumen</a>
 
             </div>
         </div>
@@ -116,20 +126,19 @@
             </div>
         </div>
         <br>
-        <p class="fs-3 text-center my-2">Data Orang Tua / Wali</p>
+        <p class="fs-2 text-center my-2">Data Orang Tua / Wali</p>
         <hr class="m-0">
 
         @if ($student->studentparents == null)
             <div class="text-center mt-3">
                 <p class="fs-5 text-center mb-1">Data Orang Tua / Wali belum ada</p>
-                <a href="{{ route('studentparent.create', ['id' => $student->id]) }}" class="btn btn-primary">tambah data
+                <a href="{{ route('studentparent.create', ['id' => $student->id]) }}" class="btn btn-primary">edit
                     data
                     orang
                     tua/wali
                 </a>
             </div>
         @else
-            <a href="{{ route('studentparent.edit', $student->studentparents->id) }}">edit</a>
             <div class="row">
                 <div class="col-4">
                     <table id="table" class="table align-middle" style="width: 100%">

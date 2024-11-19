@@ -172,6 +172,16 @@
                             <small class="m-0 p-0 d-sm-none d-sm-block">Siswa</small>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('password.change') }}"
+                            class="nav-link text-center text-sm-start text-white
+                    {{ Route::currentRouteName() == 'password.change' ? 'active' : '' }}">
+                            <i class="bi bi-person-gear menu-icon"></i>
+                            <span class="ms-2 d-none d-sm-inline">Ubah Sandi</span>
+                            <br class="d-sm-none d-inline">
+                            <small class="m-0 p-0 d-sm-none d-sm-block">Siswa</small>
+                        </a>
+                    </li>
                 </ul>
             @break
 

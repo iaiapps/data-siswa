@@ -16,7 +16,7 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::all();
-        return view('student.index', compact('students'));
+        return view('admin.student.index', compact('students'));
     }
 
     /**
@@ -27,7 +27,7 @@ class StudentController extends Controller
         $user_id = $request->user_id;
         $student = Student::where('user_id', $user_id)->first();
         // dd($student);
-        return view('student.create', compact('student'));
+        return view('admin.student.create', compact('student'));
     }
 
     /**
@@ -47,7 +47,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        return view('student.show', compact('student'));
+        return view('admin.student.show', compact('student'));
     }
 
     /**
@@ -56,7 +56,7 @@ class StudentController extends Controller
     public function edit(Student $student)
     {
         // dd($student);
-        return view('student.edit', compact('student'));
+        return view('admin.student.edit', compact('student'));
     }
 
     /**

@@ -24,7 +24,7 @@ class StudentParentController extends Controller
     public function create(Request $request)
     {
         $id = $request->id;
-        return view('parent.create', compact('id'));
+        return view('student.parent.create', compact('id'));
     }
 
     /**

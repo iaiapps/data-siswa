@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
 use App\Models\User;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -32,15 +34,28 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user_id = User::create($request->all())->assignRole($request->role)->id;
+        // dd(Hash::make($request->password));
+        $user_data = [
+            'name' => $request->name,
+            'email' => $request->nis . '@sditharum.id',
+            'password' => Hash::make($request->password),
+        ];
+
+        $user_id = User::create($user_data)->assignRole($request->role)->id;
 
         // create student
-        $name = $request->name;
         Student::create([
             'user_id' => $user_id,
-            'name' => $name
+            'name' => $request->name,
+            'nis' => $request->nis,
+            'nisn' => $request->nisn,
+            'gender' => $request->gender,
+            'birthplace' => $request->birthplace,
+            'birthdate' => $request->birthdate,
+
         ]);
-        return redirect()->route('student.create', ['user_id' => $user_id]);
+        // return redirect()->route('student.create', ['user_id' => $user_id]);
+        return redirect()->route('student.index');
     }
 
     /**
@@ -73,5 +88,24 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+
+    // handle ganti password user
+    public function changePassword()
+    {
+        $id = Auth::user()->id;
+        return view('admin.user.passchange', compact('id'));
+    }
+    public function editPassword(Request $request, User $pass)
+    {
+        $validated = $request->validate([
+            'current_password' => 'required|current_password:web',
+            'password' => 'required|min:8|confirmed',
+            'password_confirmation' => 'required',
+        ]);
+
+        $pass->update($validated);
+        return redirect()->route('biodata.index');
     }
 }
