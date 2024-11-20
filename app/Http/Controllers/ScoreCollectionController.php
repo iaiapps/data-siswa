@@ -16,7 +16,7 @@ class ScoreCollectionController extends Controller
     {
         $students = Student::all();
         $subjects = Subject::all();
-        return view('student.scorecollection.index', compact('students', 'subjects'));
+        return view('admin.student.scorecollection.index', compact('students', 'subjects'));
     }
 
     /**
@@ -26,7 +26,7 @@ class ScoreCollectionController extends Controller
     {
         $students = Student::all();
         $subjects = Subject::all();
-        return view('student.scorecollection.create', compact('students', 'subjects'));
+        return view('admin.student.scorecollection.create', compact('students', 'subjects'));
     }
 
     /**
@@ -48,7 +48,7 @@ class ScoreCollectionController extends Controller
         // dd($id);
         $collection = ScoreCollection::where('student_id', '=', $id)->get();
         // dd($collection);
-        return view('student.scorecollection.show', compact('collection'));
+        return view('admin.student.scorecollection.show', compact('collection'));
     }
 
     /**

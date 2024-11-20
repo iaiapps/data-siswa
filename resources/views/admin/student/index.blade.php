@@ -2,12 +2,13 @@
 
 @section('title', 'Data Siswa')
 @section('content')
+    <div class="mb-3">
+        <a href="{{ route('user.create') }}" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Tambah
+            Siswa</a>
+    </div>
     <div class="card p-3 rounded">
         <div class="table-responsive">
-            <div class="mb-3">
-                <a href="{{ route('user.create') }}" class="btn btn-success"><i class="bi bi-plus-circle"></i> Tambah
-                    Siswa</a>
-            </div>
+
             <div class="table-responsive">
                 <table id="table" class="table table-striped align-middle" style="width: 100%">
                     <thead>

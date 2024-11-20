@@ -20,7 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::middleware('auth')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-
+    // admin
     Route::middleware('role:admin')->group(function () {
         // akun user
         Route::resource('user', UserController::class);
@@ -43,7 +43,7 @@ Route::middleware('auth')->group(function () {
         Route::post('scorecollection', [ScoreCollectionController::class, 'store'])->name('scorecollection.store');
         Route::get('scorecollection/{id}', [ScoreCollectionController::class, 'show'])->name('scorecollection.show');
     });
-
+    // admin and siswa
     Route::middleware('role:admin|siswa')->group(function () {
         // ortu siswa
         Route::resource('studentparent', StudentParentController::class)->except('index');
@@ -54,12 +54,13 @@ Route::middleware('auth')->group(function () {
         Route::get('view_foto/{document}', [DocumentController::class, 'show'])->name('viewfoto');
         Route::delete('view_foto/{document}', [DocumentController::class, 'destroy'])->name('deletefoto');
     });
-
+    // siswa
     Route::middleware('role:siswa')->group(function () {
         // biodata siswa
         Route::get('biodata', [StudentController::class, 'biodata'])->name('biodata.index');
         Route::get('/biodata/{id}', [StudentController::class, 'biodataEdit'])->name('biodata.edit');
         Route::put('/biodata/{biodata}', [StudentController::class, 'biodataStore'])->name('biodata.update');
+        // change password
         Route::get('/change-password', [UserController::class, 'changePassword'])->name('password.change');
         Route::put('/change-password/{pass}', [UserController::class, 'editPassword'])->name('password.edit');
     });

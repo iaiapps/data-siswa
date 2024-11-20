@@ -31,9 +31,11 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-        //cek id
-        // $id = Auth::user()->id;
-        // $teacher_id = Student::where('user_id', $id)->get()->first()->id;
+        //cek role
+        /** @var \App\Models\User */
+        $role = Auth::user();
+
+
         $student_id = $request->student_id;
 
         //validate
@@ -58,7 +60,12 @@ class DocumentController extends Controller
 
         //simpan ke database
         Document::create($imgDocument);
-        return redirect()->route('student.show', $student_id)->with('success', 'Data telah ditambah');
+
+        if ($role->hasRole('admin')) {
+            return redirect()->route('student.show', $student_id)->with('success', 'Data telah ditambah');
+        } elseif ($role->hasRole('siswa')) {
+            return redirect()->route('home')->with('success', 'Data telah ditambah');
+        }
     }
 
     /**
@@ -108,9 +115,6 @@ class DocumentController extends Controller
 
     public function storefoto(Request $request)
     {
-        //cek id
-        // $id = Auth::user()->id;
-        // $teacher_id = Student::where('user_id', $id)->get()->first()->id;
         $student_id = $request->student_id;
 
         //validate
