@@ -36,10 +36,23 @@
                         @enderror
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label" for="full_name">Nama Lengkap</label>
-                    <input class="form-control bg-secondary-subtle" id="full_name" name="full_name" type="text"
-                        placeholder="nama lengkap" value="{{ $student->name }}" readonly />
+                <div class="row mb-3">
+                    <div class="col">
+
+                        <label class="form-label" for="full_name">Nama Lengkap</label>
+                        <input class="form-control bg-secondary-subtle" id="full_name" name="full_name" type="text"
+                            placeholder="nama lengkap" value="{{ $student->name }}" readonly />
+                    </div>
+                    <div class="col">
+                        <label class="form-label" for="year">Tahun Masuk</label>
+
+                        <select name="year_id" class="form-select" id="year">
+                            @foreach ($years as $year)
+                                <option disabled selected>--- pilih tahun ---</option>
+                                <option value="{{ $year->id }}">{{ $year->year }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
 
                 <div class="mb-3">

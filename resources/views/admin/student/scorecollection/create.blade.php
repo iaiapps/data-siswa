@@ -6,18 +6,19 @@
 
     <div class="card">
         <div class="card-body mt-3">
-            <p class="fs-4">Buat Nilai baru</p>
+            <p class="fs-4">Buat Nilai Siswa {{ $student->name }}</p>
             <hr>
             <form method="POST" action="{{ route('scorecollection.store') }}">
                 @csrf
                 <div class="input-group mb-3">
-                    <span class="input-group-text bg-secondary-subtle">Pilih Siswa</span>
+                    {{-- <span class="input-group-text bg-secondary-subtle">Pilih Siswa</span>
                     <select name="student_id" id="student" class="form-control">
                         <option disabled selected>--- pilih siswa ---</option>
                         @foreach ($students as $student)
                             <option value="{{ $student->id }}">{{ $student->name }}</option>
                         @endforeach
-                    </select>
+                    </select> --}}
+                    <input type="text" name="student_id" value="{{ $student->id }}" hidden>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text bg-secondary-subtle">Pilih Mapel</span>

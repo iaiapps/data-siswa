@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Data Mata Pelajaran')
+@section('title', 'Data Tahun Pelajaran')
 
 @section('content')
-    <a href="{{ route('subject.create') }}" class="btn btn-primary mb-3">Tambah Pelajaran</a>
+    <a href="{{ route('year.create') }}" class="btn btn-primary mb-3">Tambah Tahun Pelajaran</a>
 
     <div class="card rounded p-3">
         <div class="table-responsive">
@@ -12,21 +12,33 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Mata Pelajaran</th>
+                        <th scope="col">Data Tahun</th>
+                        <th scope="col">Jumlah Siswa</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($subjects as $subject)
+                    @foreach ($years as $year)
                         <tr>
-                            <td>{{ $subject->id }}</td>
-                            <td>{{ $subject->pelajaran }}</td>
+                            <td>{{ $year->id }}</td>
+                            <td>{{ $year->year }}</td>
+                            <td>
+                                <button class="btn btn-outline-primary btn-sm">
+                                    {{ $year->student->count() ?? 'belum ditentukan' }}
+                                </button>
+                                <a href="{{ route('showstudentyear', ['id' => $year->id]) }}"
+                                    class="btn btn-sm btn-primary">lihat
+                                    siswa</a>
+                                <a href="{{ route('addstudentyear', ['id' => $year->id]) }}"
+                                    class="btn btn-warning btn-sm">edit
+                                    siswa</a>
+                            </td>
 
                             <td>
-                                <a href="{{ route('subject.edit', $subject->id) }}" class="btn btn-warning btn-sm">edit
-                                    pelajaran</a>
+                                <a href="{{ route('year.edit', $year->id) }}" class="btn btn-warning btn-sm">edit
+                                    tahun</a>
 
-                                <form method="POST" action="{{ route('subject.destroy', $subject->id) }}" class="d-inline"
+                                <form method="POST" action="{{ route('year.destroy', $year->id) }}" class="d-inline"
                                     onsubmit="return confirm('Apakah anda yakin untuk menghapus data ?');">
                                     @csrf
                                     @method('DELETE')

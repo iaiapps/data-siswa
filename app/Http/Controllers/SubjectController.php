@@ -47,7 +47,7 @@ class SubjectController extends Controller
      */
     public function edit(Subject $subject)
     {
-        //
+        return view('admin.subject.edit', compact('subject'));
     }
 
     /**
@@ -55,7 +55,9 @@ class SubjectController extends Controller
      */
     public function update(Request $request, Subject $subject)
     {
-        //
+        // dd($request->all());
+        $subject->update($request->all());
+        return redirect()->route('subject.index');
     }
 
     /**

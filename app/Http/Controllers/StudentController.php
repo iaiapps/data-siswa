@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Student;
+use App\Models\Year;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -56,7 +57,8 @@ class StudentController extends Controller
     public function edit(Student $student)
     {
         // dd($student);
-        return view('admin.student.edit', compact('student'));
+        $years = Year::all();
+        return view('admin.student.edit', compact('student', 'years'));
     }
 
     /**

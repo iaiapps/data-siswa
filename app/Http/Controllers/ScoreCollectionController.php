@@ -22,11 +22,13 @@ class ScoreCollectionController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        $students = Student::all();
+        // dd($request->s_id);
+        $student = Student::find($request->s_id);
         $subjects = Subject::all();
-        return view('admin.student.scorecollection.create', compact('students', 'subjects'));
+        // dd($student);
+        return view('admin.student.scorecollection.create', compact('student', 'subjects'));
     }
 
     /**
@@ -45,10 +47,10 @@ class ScoreCollectionController extends Controller
      */
     public function show($id)
     {
-        // dd($id);
+        $student = Student::find($id);
         $collection = ScoreCollection::where('student_id', '=', $id)->get();
         // dd($collection);
-        return view('admin.student.scorecollection.show', compact('collection'));
+        return view('admin.student.scorecollection.show', compact('collection', 'student'));
     }
 
     /**
@@ -56,7 +58,7 @@ class ScoreCollectionController extends Controller
      */
     public function edit(ScoreCollection $scoreCollection)
     {
-        //
+        return view('admin.student.scorecollection.edit', compact('scoreCollection'));
     }
 
     /**
@@ -64,7 +66,9 @@ class ScoreCollectionController extends Controller
      */
     public function update(Request $request, ScoreCollection $scoreCollection)
     {
-        //
+        // dd($request->all());
+        $scoreCollection->update($request->all());
+        return redirect()->route('scorecollection.show', $scoreCollection->id);
     }
 
     /**

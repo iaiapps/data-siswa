@@ -3,11 +3,14 @@
 @section('title', 'Data Nilai Siswa')
 @section('content')
 
-
     <a href="{{ url()->previous() }}" class=" btn btn-primary mb-3">kembali</a>
-    <div class="card p-3">
+    <br>
+    <a href="{{ route('scorecollection.create', ['s_id' => $student->id]) }}" class="btn btn-primary mb-3">Tambah Nilai
+        Pelajaran</a>
 
-        <p class="fs-4 text-center mb-2">Nilai Siswa</p>
+    {{-- <p>{{ $student->id }}</p> --}}
+    <div class="card p-3">
+        <p class="fs-4 text-center mb-2">Nilai Siswa {{ $student->name }}</p>
         <hr class="m-0">
         <div class="row">
             <div class="col">
@@ -21,6 +24,7 @@
                             <th colspan="2" class="text-center">Kelas 4</th>
                             <th colspan="2" class="text-center">Kelas 5</th>
                             <th colspan="2" class="text-center">Kelas 6</th>
+                            <th rowspan="2" class="text-center">Action</th>
                         </tr>
                         <tr>
                             <th>sem 1</th>
@@ -35,6 +39,7 @@
                             <th>sem 2</th>
                             <th>sem 1</th>
                             <th>sem 2</th>
+
                         </tr>
                         @foreach ($collection as $cl)
                             <tr>
@@ -51,6 +56,8 @@
                                 <td>{!! $cl->kelas_5b ?? '<i class="bi bi-x-circle text-danger fs-5"></i>' !!} </td>
                                 <td>{!! $cl->kelas_6a ?? '<i class="bi bi-x-circle text-danger fs-5"></i>' !!} </td>
                                 <td>{!! $cl->kelas_6b ?? '<i class="bi bi-x-circle text-danger fs-5"></i>' !!} </td>
+                                <td><a href="{{ route('scorecollection.edit', $cl->id) }}"
+                                        class="btn btn-warning btn-sm">edit</a></td>
                             </tr>
                         @endforeach
                     </tbody>

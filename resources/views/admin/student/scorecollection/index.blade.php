@@ -3,9 +3,6 @@
 @section('title', 'Data Mata Pelajaran')
 
 @section('content')
-
-    <a href="{{ route('scorecollection.create') }}" class="btn btn-primary mb-3">Tambah Nilai Pelajaran</a>
-
     <div class="card rounded p-3">
         <div class="table-responsive">
 
@@ -31,7 +28,37 @@
                             <td>{{ $student->group->kelas ?? 'belum ditentukan' }}</td>
                             @foreach ($subjects as $subject)
                                 @if (!$student->scorecollection->where('subject_id', $subject->id)->isEmpty())
-                                    <td>cek</td>
+                                    <td>
+                                        @php
+                                            $nilai = $student->scorecollection
+                                                ->where('subject_id', $subject->id)
+                                                ->first();
+                                            $n = [
+                                                $nilai->kelas_1a,
+                                                $nilai->kelas_1b,
+                                                $nilai->kelas_2a,
+                                                $nilai->kelas_2b,
+                                                $nilai->kelas_3a,
+                                                $nilai->kelas_3b,
+                                                $nilai->kelas_4a,
+                                                $nilai->kelas_4b,
+                                                $nilai->kelas_5a,
+                                                $nilai->kelas_5b,
+                                                $nilai->kelas_6a,
+                                                $nilai->kelas_6b,
+                                            ];
+
+                                            if (count(array_filter($n)) == count($n)) {
+                                                $nilaii = 'progress';
+                                                $percent = round((count(array_filter($n)) / count($n)) * 100, 0);
+                                            } elseif (count(array_filter($n)) < count($n)) {
+                                                $nilaii = 'progress';
+                                                $percent = round((count(array_filter($n)) / count($n)) * 100, 0);
+                                            }
+
+                                        @endphp
+                                        {{ $nilaii . ' ' . $percent . '%' }}
+                                    </td>
                                 @else
                                     <td>belum diisi</td>
                                 @endif

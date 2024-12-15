@@ -7,31 +7,60 @@
     <div class="card">
         {{-- <div class="card-header bg-success">{{ __('Register') }}</div> --}}
         <div class="card-body mt-3">
-            <form method="POST" action="{{ route('group.update', $group->id) }}">
+            <form method="POST" action="{{ route('scorecollection.update', $scoreCollection->id) }}">
                 @csrf
                 @method('PUT')
-                <div class="row mb-3">
-                    <label for="kelas" class="col-md-2 col-form-label">Nama Kelas</label>
-                    <div class="col-md-10">
-                        <input id="kelas" type="text" class="form-control @error('kelas') is-invalid @enderror"
-                            name="kelas" value="{{ old('kelas', $group->kelas) }}" required autocomplete="kelas"
-                            autofocus>
+                <div>
+                    <table class="table">
 
-                        @error('kelas')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
+                        <body>
+                            <tr>
+                                <td>Kelas 1</td>
+                                <td>semester 1 <input class="form-control" type="number" name="kelas_1a"
+                                        value="{{ $scoreCollection->kelas_1a }}"></td>
+                                <td>semester 2 <input class="form-control" type="number" name="kelas_1b"
+                                        value="{{ $scoreCollection->kelas_1b }}"></td>
+                            </tr>
 
-                <div class="row mb-0">
-                    <div class="col-md-12 text-center">
-                        <button type="submit" class="btn btn-success">
-                            Simpan data Kelas
-                        </button>
-                    </div>
+                            <tr>
+                                <td>Kelas 2</td>
+                                <td>semester 1 <input class="form-control" type="number" name="kelas_2a"
+                                        value="{{ $scoreCollection->kelas_2a }}"></td>
+                                <td>semester 2 <input class="form-control" type="number" name="kelas_2b"
+                                        value="{{ $scoreCollection->kelas_2b }}"></td>
+                            </tr>
+                            <tr>
+                                <td>Kelas 3</td>
+                                <td>semester 1 <input class="form-control" type="number" name="kelas_3a"
+                                        value="{{ $scoreCollection->kelas_3a }}"></td>
+                                <td>semester 2 <input class="form-control" type="number" name="kelas_3b"
+                                        value="{{ $scoreCollection->kelas_3b }}"></td>
+                            </tr>
+                            <tr>
+                                <td>Kelas 4</td>
+                                <td>semester 1 <input class="form-control" type="number" name="kelas_4a"
+                                        value="{{ $scoreCollection->kelas_4a }}"></td>
+                                <td>semester 2 <input class="form-control" type="number" name="kelas_4b"
+                                        value="{{ $scoreCollection->kelas_4b }}"></td>
+                            </tr>
+                            <tr>
+                                <td>Kelas 5</td>
+                                <td>semester 1 <input class="form-control" type="number" name="kelas_5a"
+                                        value="{{ $scoreCollection->kelas_5a }}"></td>
+                                <td>semester 2 <input class="form-control" type="number" name="kelas_5b"
+                                        value="{{ $scoreCollection->kelas_5b }}"></td>
+                            </tr>
+                            <tr>
+                                <td>Kelas 6</td>
+                                <td>semester 1 <input class="form-control" type="number" name="kelas_6a"
+                                        value="{{ $scoreCollection->kelas_6a }}"></td>
+                                <td>semester 2 <input class="form-control" type="number" name="kelas_6b"
+                                        value="{{ $scoreCollection->kelas_6b }}"></td>
+                            </tr>
+                        </body>
+                    </table>
                 </div>
+                <button type="submit">submit</button>
             </form>
         </div>
     </div>

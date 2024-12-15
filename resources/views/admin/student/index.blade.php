@@ -17,8 +17,8 @@
                             <th scope="col">Nama</th>
                             {{-- <th scope="col">Jenis Kelamin</th> --}}
                             <th scope="col">Kelas</th>
-                            <th scope="col">NIS</th>
-                            <th scope="col">NISN</th>
+                            <th scope="col">NIS - NISN</th>
+                            <th scope="col">Tahun Masuk</th>
                             <th scope="col">Ayah</th>
                             <th scope="col">Ibu</th>
                             <th scope="col">Cek</th>
@@ -35,8 +35,9 @@
                                 <td>{{ $student->group->kelas ?? 'belum ditentukan' }}</td>
                                 {{-- <td>{{ $student->gender }}</td> --}}
                                 {{-- <td>{{ $student->place_of_birth }}, {{ $student->date_of_birth }}</td> --}}
-                                <td>{{ $student->nis ?? 'belum ditentukan' }}</td>
-                                <td>{{ $student->nisn ?? 'belum ditentukan' }}</td>
+                                <td>{{ $student->nis ?? 'belum ditentukan' }} - {{ $student->nisn ?? 'belum ditentukan' }}
+                                </td>
+                                <td>{{ $student->year->year ?? 'belum ditentukan' }}</td>
                                 <td>{{ $student->studentparents->nama_ayah ?? 'belum ditentukan' }}</td>
                                 <td>{{ $student->studentparents->nama_ibu ?? 'belum ditentukan' }}</td>
                                 <td>

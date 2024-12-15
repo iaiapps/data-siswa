@@ -11,6 +11,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentParentController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\YearController;
 use App\Models\ScoreCollection;
 
 Route::get('/', function () {
@@ -37,11 +38,19 @@ Route::middleware('auth')->group(function () {
         // pelajaran
         Route::resource('subject', SubjectController::class);
 
+        // tahun pelajaran
+        Route::resource('year', YearController::class);
+        Route::get('showstudentyear/{id}', [YearController::class, 'showstudentyear'])->name('showstudentyear');
+        Route::get('addstudentyear/{id}', [YearController::class, 'addstudentyear'])->name('addstudentyear');
+        Route::put('studentyear', [YearController::class, 'storestudentyear'])->name('storestudentyear');
+
         // kumpulan nilai
         Route::get('scorecollection', [ScoreCollectionController::class, 'index'])->name('scorecollection.index');
         Route::get('scorecollection/create', [ScoreCollectionController::class, 'create'])->name('scorecollection.create');
         Route::post('scorecollection', [ScoreCollectionController::class, 'store'])->name('scorecollection.store');
         Route::get('scorecollection/{id}', [ScoreCollectionController::class, 'show'])->name('scorecollection.show');
+        Route::get('scorecollection/{scoreCollection}/edit', [ScoreCollectionController::class, 'edit'])->name('scorecollection.edit');
+        Route::put('scorecollection/{scoreCollection}', [ScoreCollectionController::class, 'update'])->name('scorecollection.update');
     });
     // admin and siswa
     Route::middleware('role:admin|siswa')->group(function () {

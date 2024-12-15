@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Year;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class YearController extends Controller
@@ -12,7 +13,8 @@ class YearController extends Controller
      */
     public function index()
     {
-        //
+        $years = Year::all();
+        return view('admin.year.index', compact('years'));
     }
 
     /**
@@ -20,7 +22,7 @@ class YearController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.year.create');
     }
 
     /**
@@ -28,7 +30,9 @@ class YearController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        Year::create($data);
+        return redirect()->route('year.index');
     }
 
     /**
@@ -44,7 +48,7 @@ class YearController extends Controller
      */
     public function edit(Year $year)
     {
-        //
+        return view('admin.year.edit', compact('year'));
     }
 
     /**
@@ -52,7 +56,8 @@ class YearController extends Controller
      */
     public function update(Request $request, Year $year)
     {
-        //
+        $year->update($request->all());
+        return redirect()->route('year.index');
     }
 
     /**
@@ -61,5 +66,35 @@ class YearController extends Controller
     public function destroy(Year $year)
     {
         //
+    }
+
+    // ini fungsi siswa dan tahun
+    public function showstudentyear($id)
+    {
+        $year = Year::where('id', $id)->first();
+        $students = Student::where('year_id', $id)->get();
+        return view('admin.year.showstudent', compact('students', 'year'));
+    }
+
+    public function addstudentyear($id)
+    {
+        $students = Student::all();
+        $years = Year::all();
+        return view('admin.year.addstudent', compact('students', 'years', 'id'));
+    }
+    public function storestudentyear(Request $request)
+    {
+        $year_id = $request->year_id;
+        $check = $request->check;
+        $student_id = $request->student_id;
+
+        foreach ($student_id as $sid) {
+            if (isset($check[$sid]) == 'on') {
+                Student::where('id', '=', $sid)->update([
+                    'year_id' => $year_id
+                ]);
+            }
+        }
+        return redirect()->back();
     }
 }

@@ -41,7 +41,7 @@
                 <p class="fs-3 m-0">{{ $student->name }} <span class="fs-5">[{{ $student->gender }}]</span></p>
                 <p class="fs-5 m-0">Nomor Induk Siswa Nasional : {{ $student->nisn }}</p>
                 <p class="fs-5 m-0">Nomor Induk Siswa : {{ $student->nis }}</p>
-                <p class="fs-6 m-0">Diterima pada tahun ajaran {{ $student->year ?? 'belum ditentukan' }}</p>
+                <p class="fs-6 m-0">Diterima pada tahun ajaran {{ $student->year->year ?? 'belum ditentukan' }}</p>
             </div>
             <div class="col-3">
                 <a href="{{ route('student.edit', $student->id) }}" class="btn btn-primary my-1">edit biodata</a>

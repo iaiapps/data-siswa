@@ -30,4 +30,8 @@ class Student extends Model
     {
         return $this->hasMany(ScoreCollection::class);
     }
+    public function year()
+    {
+        return $this->belongsTo(Year::class);
+    }
 }

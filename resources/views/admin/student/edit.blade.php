@@ -23,19 +23,31 @@
                             value="{{ $student->nisn }}" />
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label" for="name">Nama Lengkap</label>
-                    <input
-                        class="form-control @error('name')
+                <div class="row mb-3">
+                    <div class="col">
+                        <label class="form-label" for="name">Nama Lengkap</label>
+                        <input
+                            class="form-control @error('name')
                         is-invalid
                     @enderror"
-                        id="name" name="name" type="text" placeholder="nama lengkap"
-                        value="{{ old('name', $student->name) }}" />
-                    @error('name')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
+                            id="name" name="name" type="text" placeholder="nama lengkap"
+                            value="{{ old('name', $student->name) }}" />
+                        @error('name')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="col">
+                        <label class="form-label" for="year">Tahun Masuk</label>
+
+                        <select name="year_id" class="form-select" id="year">
+                            @foreach ($years as $year)
+                                <option disabled selected>--- pilih tahun ---</option>
+                                <option value="{{ $year->id }}">{{ $year->year }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
 
                 <div class="mb-3">

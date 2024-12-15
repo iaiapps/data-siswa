@@ -2,17 +2,18 @@
 
 @section('title', 'Data Siswa')
 @section('content')
+    <a href="{{ route('year.index') }}" class="btn btn-primary mb-3">Kembali</a>
+
     <div class="card rounded p-3">
-        <form action="{{ route('storestudentgroup') }}" method="POST">
+        <form action="{{ route('storestudentyear') }}" method="POST">
             @csrf
             @method('PUT')
             <div class="input-group mb-3">
-                <span class="input-group-text bg-secondary-subtle">Pilih Kelas</span>
-                <select name="group_id" id="group" class="form-control">
-                    <option disabled selected>--- pilih kelas ---</option>
-                    @foreach ($groups as $group)
-                        <option value="{{ $group->id }}">{{ $group->kelas }}</option>
-                    @endforeach
+                <span class="input-group-text bg-secondary-subtle">Pilih Tahun Pelajaran</span>
+                <select name="year_id" id="year" class="form-control">
+                    <option value="{{ $years->where('id', $id)->first()->id }}">
+                        {{ $years->where('id', $id)->first()->year }}</option>
+
                 </select>
                 <button type="submit" class="btn btn-primary">simpan</button>
             </div>
@@ -24,7 +25,7 @@
                             <th scope="col">Check</th>
                             <th scope="col">Nama Siswa</th>
                             <th scope="col">Jenis Kelamin</th>
-                            <th scope="col">Kelas</th>
+                            <th scope="col">Tahun</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,7 +39,7 @@
                                 <td>{{ $student->name }} <input type="text" value="{{ $student->id }}"
                                         name="student_id[{{ $student->id }}]" hidden></td>
                                 <td>{{ $student->gender }}</td>
-                                <td>{{ $student->group->kelas ?? 'belum ditentukan' }}</td>
+                                <td>{{ $student->year->year ?? 'belum ditentukan' }}</td>
                             </tr>
                         @endforeach
                     </tbody>

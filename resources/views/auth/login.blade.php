@@ -7,18 +7,17 @@
             <div class="col-md-6">
                 <div class="card mt-2">
                     <div class="card-header text-center">{{ __('Login') }}</div>
-
                     <div class="card-body mx-4">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
                             <div class="mb-3">
-                                <label for="email" class="form-label text-md-end">{{ __('Email Address') }}</label>
-
-
+                                <label for="email" class="form-label text-md-end">Alamat Email (NIS +
+                                    @sditharum.id)</label>
                                 <input id="email" type="email"
                                     class="form-control @error('email') is-invalid @enderror" name="email"
-                                    value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                    value="{{ old('email') }}" required autocomplete="email" autofocus
+                                    placeholder="nis@sditharum.id">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -29,12 +28,10 @@
                             </div>
 
                             <div class=" mb-3">
-                                <label for="password" class="form-label text-md-end">{{ __('Password') }}</label>
-
-
+                                <label for="password" class="form-label text-md-end">Kata Sandi</label>
                                 <input id="password" type="password"
                                     class="form-control @error('password') is-invalid @enderror" name="password" required
-                                    autocomplete="current-password">
+                                    autocomplete="current-password" placeholder="********">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">

@@ -3,7 +3,7 @@
 @section('title', 'Data Kelas')
 @section('content')
     <div class="card rounded p-3">
-        <p class="text-center fs-5 m-0">Data Siswa Kelas {{ $group->kelas }}</p>
+        <p class="text-center fs-5 m-0">Data Siswa Tahun Pelajaran {{ $year->year }}</p>
         <hr>
         <div class="table-responsive">
             <table id="table" class="table">
