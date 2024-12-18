@@ -4,9 +4,12 @@
 
 @section('content')
 
-    {{-- @dd(Auth::user()->hasRole('admin')) --}}
-    {{-- <a href="{{ route('user.create') }}" class="btn btn-primary mb-3">Tambah Akun Siswa</a> --}}
-    {{-- <a href="{{ route('user.create') }}" class="btn btn-primary mb-3">tambah data guru</a> --}}
+    @if (session()->has('reset'))
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ session('reset') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
 
     <div class="card rounded p-3">
         <div class="table-responsive">
@@ -31,7 +34,12 @@
 
                             <td>
                                 <a href="{{ route('user.edit', $user->id) }}" class="btn btn-warning btn-sm">edit</a>
-
+                                <form method="POST" action="{{ route('reset.pass', $user->id) }}" class="d-inline"
+                                    onsubmit="return confirm('Apakah anda yakin untuk reset password ?');">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="btn btn-secondary btn-sm">reset</button>
+                                </form>
                                 <form method="POST" action="{{ route('user.destroy', $user->id) }}" class="d-inline"
                                     onsubmit="return confirm('Apakah anda yakin untuk menghapus data ?');">
                                     @csrf
@@ -39,9 +47,6 @@
                                     <button type="submit" class="btn btn-danger btn-sm">delete</button>
                                 </form>
 
-                                {{-- <a href="{{ route('role.edit', ['urole' => $user->id]) }}"
-                                    class="btn btn-warning btn-sm">edit
-                                    role</a> --}}
                             </td>
                         </tr>
                     @endforeach

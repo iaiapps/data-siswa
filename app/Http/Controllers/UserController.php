@@ -71,7 +71,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.user.edit', compact('user'));
+        $roles = Role::all();
+        return view('admin.user.edit', compact('user', 'roles'));
     }
 
     /**
@@ -79,7 +80,11 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $data = $request->all();
+        // dd($data);
+        $user->update($data);
+        $user->syncRoles($request->role);
+        return redirect()->route('user.index');
     }
 
     /**
@@ -87,9 +92,19 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('user.index');
     }
 
+    // handle resetpassword from admin to default (password1234)
+    public function resetpass($id)
+    {
+        $user = User::where('id', $id)->first();
+        $user->update([
+            'password' => Hash::make('password1234'),
+        ]);
+        return redirect()->back()->with('reset', 'password berhasil direset');
+    }
 
     // handle ganti password user
     public function changePassword()

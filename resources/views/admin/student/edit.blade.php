@@ -4,10 +4,17 @@
 @section('content')
     <div class="bg-white p-3 rounded">
 
-        <form action="{{ route('student.update', $student->id) }}" method="POST">
+        @php
+            if (Auth::user()->hasRole('admin')) {
+                $route = route('student.update', $student->id);
+            } else {
+                $route = route('biodata.update', $student->id);
+            }
+        @endphp
+
+        <form action="{{ $route }}" method="POST">
             @csrf
             @method('put')
-
 
             <fieldset class="step">
                 <h2 class="mb-3">Edit Biodata Siswa</h2>
@@ -38,16 +45,21 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="col">
-                        <label class="form-label" for="year">Tahun Masuk</label>
-
-                        <select name="year_id" class="form-select" id="year">
-                            @foreach ($years as $year)
-                                <option disabled selected>--- pilih tahun ---</option>
-                                <option value="{{ $year->id }}">{{ $year->year }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                    {{-- @php
+                        $user = Auth::user()->hasRole('admin');
+                        dd($user);
+                    @endphp --}}
+                    @if (Auth::user()->hasRole('admin'))
+                        <div class="col">
+                            <label class="form-label" for="year">Tahun Masuk</label>
+                            <select name="year_id" class="form-select" id="year">
+                                @foreach ($years as $year)
+                                    <option disabled selected>--- pilih tahun ---</option>
+                                    <option value="{{ $year->id }}">{{ $year->year }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    @endif
                 </div>
 
                 <div class="mb-3">
@@ -76,6 +88,7 @@
                             @enderror
                         </div>
                     </div>
+
                     <div class="col-6">
                         <div class="mb-3">
                             <label class="form-label " for="birthdate">Tanggal Lahir</label>
@@ -90,6 +103,7 @@
                             @enderror
                         </div>
                     </div>
+
                     <div class="col-12 col-md-6">
                         <div class="mb-3">
                             <label class="form-label " for="childstatus">Status Anak</label>

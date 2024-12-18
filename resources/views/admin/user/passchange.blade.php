@@ -8,11 +8,10 @@
         <div class="card-body mt-3">
             <p class="fs-4">Ganti Password</p>
             <hr>
-            {{-- @dd($id); --}}
+
             <form method="POST" action="{{ route('password.edit', ['pass' => $id]) }}">
                 @csrf
                 @method('PUT')
-                {{-- <input type="text" name="user_id" value="{{ $id }}" hidden> --}}
 
                 <div class=" mb-3">
                     <label for="current_password" class="form-label">{{ __('Password Lama') }}</label>

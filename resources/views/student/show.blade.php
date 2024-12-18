@@ -11,10 +11,8 @@
         <hr class="m-0">
         <div class="row align-items-center">
             <div class="col-3 text-center">
-                {{-- @dd($student->documents->where('type', 'profil')->first()); --}}
                 @if (is_null($student->documents->where('type', 'profil')->first()))
                     <i class="bi bi-person-circle display-1"></i><br>
-                    {{-- <p>belum upload</p> --}}
                     <a class="btn btn-sm btn-primary" href="{{ route('uploadfoto', $student->id) }}">upload foto</a>
                 @else
                     <img class="profil"
@@ -44,15 +42,7 @@
                 <p class="fs-6 m-0">Diterima pada tahun ajaran {{ $student->year ?? 'belum ditentukan' }}</p>
             </div>
             <div class="col-3">
-                <a href="{{ route('student.edit', $student->id) }}" class="btn btn-primary my-1">edit biodata</a>
-                {{-- <a href="{{ route('studentparent.create', ['id' => $student->id]) }}" class="btn btn-primary my-1">edit
-                    data
-                    orang
-                    tua/wali
-                </a> --}}
-                <br>
-                {{-- <a href="#" class="btn btn-primary my-1">cetak dokumen</a> --}}
-
+                <a href="{{ route('biodata.edit', $student->id) }}" class="btn btn-primary my-1">edit biodata</a>
             </div>
         </div>
 

@@ -38,13 +38,13 @@
                         @enderror
                     </div>
                 </div>
-
+                <p class="text-danger mb-1 mt-4">jika password tidak ingin dirubah, biarkan jangan diotak-atik </p>
                 <div class="row mb-3">
                     <label for="password" class="col-md-2 col-form-label">{{ __('Password') }}</label>
 
                     <div class="col-md-10">
                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                            name="password" required autocomplete="new-password">
+                            name="password" required autocomplete="new-password" value="{{ $user->password }}">
 
                         @error('password')
                             <span class="invalid-feedback" role="alert">
@@ -59,7 +59,7 @@
 
                     <div class="col-md-10">
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-                            required autocomplete="new-password">
+                            required autocomplete="new-password" value="{{ $user->password }}">
                     </div>
                 </div>
 
@@ -68,12 +68,12 @@
                     <div class="col-md-10">
                         <select class="form-select" id="role" name="role">
                             <option disabled selected>---pilih role---</option>
-                            <option value="admin">Admin</option>
-                            <option value="teacher">Guru</option>
+                            @foreach ($roles as $role)
+                                <option value="{{ $role->name }}">{{ $role->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
-
 
                 <div class="row mb-0">
                     <div class="col-md-12 text-center">

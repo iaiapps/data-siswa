@@ -25,7 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware('role:admin')->group(function () {
         // akun user
         Route::resource('user', UserController::class);
-
+        Route::put('resetpass/{id}', [UserController::class, 'resetpass'])->name('reset.pass');
         // siswa
         Route::resource('student', StudentController::class);
 

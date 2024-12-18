@@ -88,12 +88,19 @@ class StudentController extends Controller
     public function biodataEdit($id)
     {
         $student = Student::find($id);
-        return view('student.edit', compact('student'));
+        return view('admin.student.edit', compact('student'));
     }
     public function biodataStore(Request $request, Student $biodata)
     {
+
         $data = $request->all();
         $biodata->update($data);
+
+        // update username
+        $id = Auth::user()->id;
+        $user = User::where('id', $id)->first()->update([
+            'name' => $request->name,
+        ]);
         return redirect()->route('biodata.index');
     }
 }

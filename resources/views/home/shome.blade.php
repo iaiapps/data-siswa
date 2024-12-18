@@ -8,8 +8,7 @@
         <div class="alert alert-danger text-center">Data belum lengkap !</div>
         <div class="alert alert-danger alert-dismissible fade show py-2 text-center" role="alert">
             <span class="m-0">Identitas anda belum lengkap!</span>
-            <a href="{{ route('biodata.index') }}" class="btn btn-dark btn-sm ms-md-2">klik
-                untuk mengisi</a>
+            <a href="{{ route('biodata.index') }}" class="btn btn-dark btn-sm ms-md-2">lihat biodata</a>
         </div>
     @endif
 
@@ -32,8 +31,8 @@
                     <span class="d-block">Profil Biodata Siswa</span>
                 </a>
             </div>
-            <div class="col-12 col-md-4 bg-light p-2">
-                <a href="#" class="nav-link btn btn-outline text-dark">
+            <div class="col-12 col-md-4 bg-success p-2">
+                <a href="#" class="nav-link btn btn-outline text-light">
                     <i class="bi bi-card-image fs-2"></i>
                     <span class="d-block">Dokumen</span>
                 </a>
