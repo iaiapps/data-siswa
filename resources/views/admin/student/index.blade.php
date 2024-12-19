@@ -15,7 +15,7 @@
                         <tr>
                             <th scope="col">No</th>
                             <th scope="col">Nama</th>
-                            {{-- <th scope="col">Jenis Kelamin</th> --}}
+                            <th scope="col">Status</th>
                             <th scope="col">Kelas</th>
                             <th scope="col">NIS - NISN</th>
                             <th scope="col">Tahun Masuk</th>
@@ -31,10 +31,13 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $student->name }}</td>
-                                {{-- <td>{{ $student->gender ?? 'belum ditentukan' }}</td> --}}
-                                <td>{{ $student->group->kelas ?? 'belum ditentukan' }}</td>
-                                {{-- <td>{{ $student->gender }}</td> --}}
-                                {{-- <td>{{ $student->place_of_birth }}, {{ $student->date_of_birth }}</td> --}}
+                                <td>
+                                    {{ isset($student->graduation->status) == 'lulus' ? 'Lulus' : 'Aktif' }}
+                                </td>
+                                <td>
+                                    {{ $student->group->kelas ?? '-' }}
+
+                                </td>
                                 <td>{{ $student->nis ?? 'belum ditentukan' }} - {{ $student->nisn ?? 'belum ditentukan' }}
                                 </td>
                                 <td>{{ $student->year->year ?? 'belum ditentukan' }}</td>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ConstitutionController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\GraduationController;
 use App\Http\Controllers\GroupController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +52,9 @@ Route::middleware('auth')->group(function () {
         Route::get('scorecollection/{id}', [ScoreCollectionController::class, 'show'])->name('scorecollection.show');
         Route::get('scorecollection/{scoreCollection}/edit', [ScoreCollectionController::class, 'edit'])->name('scorecollection.edit');
         Route::put('scorecollection/{scoreCollection}', [ScoreCollectionController::class, 'update'])->name('scorecollection.update');
+
+        // alumni
+        Route::resource('graduation', GraduationController::class);
     });
     // admin and siswa
     Route::middleware('role:admin|siswa')->group(function () {

@@ -77,16 +77,16 @@
                         </a>
                     </li>
 
-                    {{-- <li class="nav-item">
-                        <a href="{{ route('studentparent.index') }}"
+                    <li class="nav-item">
+                        <a href="{{ route('graduation.index') }}"
                             class="nav-link text-center text-sm-start text-white
-                    {{ Route::currentRouteName() == 'studentparent.index' ? 'active' : '' }}">
-                            <i class="bi bi-people menu-icon"></i>
-                            <span class="ms-2 d-none d-sm-inline">Orang Tua Siswa</span>
+                    {{ Route::currentRouteName() == 'graduation.index' ? 'active' : '' }}">
+                            <i class="bi bi-mortarboard menu-icon"></i>
+                            <span class="ms-2 d-none d-sm-inline">Alumni</span>
                             <br class="d-sm-none d-inline">
-                            <small class="m-0 p-0 d-sm-none d-sm-block">Ortu Siswa</small>
+                            <small class="m-0 p-0 d-sm-none d-sm-block">Alummni</small>
                         </a>
-                    </li> --}}
+                    </li>
 
                     <li class="nav-item">
                         <a href="{{ route('user.index') }}"

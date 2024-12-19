@@ -11,10 +11,8 @@
         <hr class="m-0">
         <div class="row align-items-center">
             <div class="col-3 text-center">
-                {{-- @dd($student->documents->where('type', 'profil')->first()); --}}
                 @if (is_null($student->documents->where('type', 'profil')->first()))
                     <i class="bi bi-person-circle display-1"></i><br>
-                    {{-- <p>belum upload</p> --}}
                     <a class="btn btn-sm btn-primary" href="{{ route('uploadfoto', $student->id) }}">upload foto</a>
                 @else
                     <img class="profil"
@@ -39,23 +37,20 @@
             </div>
             <div class="col-6">
                 <p class="fs-3 m-0">{{ $student->name }} <span class="fs-5">[{{ $student->gender }}]</span></p>
+                <p class="fs-5 m-0"> Status Siswa : {{ isset($student->graduation->status) == 'lulus' ? 'Lulus' : 'Aktif' }}
+                    {{ isset($student->graduation->year->year) ? $student->graduation->year->year : '' }}
+                </p>
                 <p class="fs-5 m-0">Nomor Induk Siswa Nasional : {{ $student->nisn }}</p>
                 <p class="fs-5 m-0">Nomor Induk Siswa : {{ $student->nis }}</p>
                 <p class="fs-6 m-0">Diterima pada tahun ajaran {{ $student->year->year ?? 'belum ditentukan' }}</p>
             </div>
             <div class="col-3">
                 <a href="{{ route('student.edit', $student->id) }}" class="btn btn-primary my-1">edit biodata</a>
-                {{-- <a href="{{ route('studentparent.create', ['id' => $student->id]) }}" class="btn btn-primary my-1">edit
-                    data
-                    orang
-                    tua/wali
-                </a> --}}
                 <br>
                 <a href="#" class="btn btn-primary my-1">cetak dokumen</a>
 
             </div>
         </div>
-
         <hr>
         <div class="row">
             <div class="col">
@@ -65,14 +60,12 @@
                             <td>Tempat & Tanggal Lahir</td>
                             <td>{{ $student->birthplace }}, {{ $student->birthdate }}</td>
                         </tr>
-
                         <tr>
                             <td>Alamat Rumah</td>
                             <td>{{ $student->address }} | rt {{ $student->rt }} / rw {{ $student->rw }} |
                                 {{ $student->village }} | {{ $student->subdistrict }} |
                                 {{ $student->city }}|{{ $student->province }} </td>
                         </tr>
-
                         <tr>
                             <td>Status Anak</td>
                             <td>{{ $student->childstatus }}</td>
@@ -81,7 +74,6 @@
                             <td>Saudara</td>
                             <td>{{ $student->siblings }}</td>
                         </tr>
-
                         <tr>
                             <td>Tinggal Bersama</td>
                             <td>{{ $student->living }}</td>
