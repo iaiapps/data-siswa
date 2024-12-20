@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('student_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
 
             $table->string('nama_ayah')->nullable();
+            $table->string('nik_ayah')->nullable();
             $table->string('tempat_lahir_ayah')->nullable();
             $table->string('tanggal_lahir_ayah')->nullable();
             $table->string('pendidikan_ayah')->nullable();
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->string('hp_ayah')->nullable();
 
             $table->string('nama_ibu')->nullable();
+            $table->string('nik_ibu')->nullable();
             $table->string('tempat_lahir_ibu')->nullable();
             $table->string('tanggal_lahir_ibu')->nullable();
             $table->string('pendidikan_ibu')->nullable();
