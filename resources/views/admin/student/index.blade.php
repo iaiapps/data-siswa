@@ -32,10 +32,10 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $student->name }}</td>
                                 <td>
-                                    {{ isset($student->graduation->status) == 'lulus' ? 'Lulus' : 'Aktif' }}
+                                    {{ $student->status == 'aktif' ? 'Aktif' : 'Lulus' }}
                                 </td>
                                 <td>
-                                    {{ $student->group->kelas ?? '-' }}
+                                    {{ $student->group->kelas ?? 'belum ditentukan' }}
 
                                 </td>
                                 <td>{{ $student->nis ?? 'belum ditentukan' }} - {{ $student->nisn ?? 'belum ditentukan' }}

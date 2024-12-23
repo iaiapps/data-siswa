@@ -26,8 +26,11 @@ class GraduationController extends Controller
     {
         $years = Year::all();
         $groups = Group::where('id', '21')->orWhere('id', '22')->orWhere('id', '23')->orWhere('id', '24')->get();
-        $student_g6 = Student::where('group_id',  $request->kelas)->get();
-        // dd($request->all());
+        if ($request->kelas) {
+            $student_g6 = Student::where('status', 'aktif')->where('group_id',  $request->kelas)->get();
+        } else {
+            $student_g6 = null;
+        }
         return view('admin.graduation.create', compact('years', 'groups', 'student_g6'));
     }
 
@@ -49,10 +52,10 @@ class GraduationController extends Controller
                 Graduation::create([
                     'student_id' => $student_id[$sid],
                     'year_id' => $year_id,
-                    'status' => 'lulus',
                 ]);
                 Student::where('id', '=', $sid)->update([
-                    'group_id' => null
+                    'status' => 'lulus',
+                    'group_id' => null,
                 ]);
             }
         }

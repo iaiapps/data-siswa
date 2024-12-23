@@ -37,7 +37,7 @@
             </div>
             <div class="col-6">
                 <p class="fs-3 m-0">{{ $student->name }} <span class="fs-5">[{{ $student->gender }}]</span></p>
-                <p class="fs-5 m-0"> Status Siswa : {{ isset($student->graduation->status) == 'lulus' ? 'Lulus' : 'Aktif' }}
+                <p class="fs-5 m-0"> Status Siswa : {{ $student->status == 'aktif' ? 'Aktif' : 'Lulus' }}
                     {{ isset($student->graduation->year->year) ? $student->graduation->year->year : '' }}
                 </p>
                 <p class="fs-5 m-0">Nomor Induk Siswa Nasional : {{ $student->nisn }}</p>

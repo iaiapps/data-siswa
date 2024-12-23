@@ -10,6 +10,7 @@
             <hr>
             <form method="POST" action="{{ route('user.store') }}">
                 @csrf
+                <input type="text" value="aktif" name="status" hidden readonly>
                 <div class="row">
                     <div class="col-md-6 col-12 mb-3">
                         <label for="nis" class="form-label">NIS</label>

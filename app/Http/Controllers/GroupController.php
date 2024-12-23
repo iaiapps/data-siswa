@@ -81,7 +81,7 @@ class GroupController extends Controller
 
     public function addstudentgroup($id)
     {
-        $students = Student::all();
+        $students = Student::where('status', 'aktif')->get();
         $groups = Group::all();
         return view('admin.group.addstudent', compact('students', 'groups', 'id'));
     }

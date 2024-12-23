@@ -30,33 +30,43 @@
             <div class="mt-2">
 
             </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <td><input type="checkbox" id="selectAllCheckbox"
-                                class="form-check-input border border-primary border-2 large">
-                            Pilih semua</td>
-                        <td>Nama</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($student_g6 as $s)
+            @if ($student_g6 != null)
+                <table class="table">
+                    <thead>
                         <tr>
                             <td>
-                                <input class="checkboxes form-check-input border border-primary border-2 large"
-                                    type="checkbox" name="check[{{ $s->id }}]">
+                                <input type="checkbox" id="selectAllCheckbox"
+                                    class="form-check-input border border-primary border-2 large">
+                                Pilih semua
                             </td>
-                            <td> <input type="text" value="{{ $s->id }}" name="student_id[{{ $s->id }}]"
-                                    hidden> {{ $s->name }}
-                            </td>
+                            <td>Nama</td>
+                            <td>Kelas</td>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="2" class="text-center">Data kelas belum dipilih</td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @forelse ($student_g6 as $s)
+                            <tr>
+                                <td>
+                                    <input class="checkboxes form-check-input border border-primary border-2 large"
+                                        type="checkbox" name="check[{{ $s->id }}]">
+                                </td>
+                                <td> <input type="text" value="{{ $s->id }}"
+                                        name="student_id[{{ $s->id }}]" hidden> {{ $s->name }}
+                                </td>
+                                <td>{{ $s->group->kelas }}</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="3" class="text-center">Belum ada data</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            @else
+                <div class="text-center fs-5">
+                    kelas belum dipilih
+                </div>
+            @endif
 
             <button type="submit" class="my-3 action submit btn btn-success float-end w-25">
                 Simpan Data

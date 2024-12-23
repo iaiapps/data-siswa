@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('year_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('group_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
+            $table->string('status');
             $table->string('nis')->nullable();
             $table->string('nisn')->nullable();
             $table->string('nik')->nullable();
@@ -38,13 +39,13 @@ return new class extends Migration
             $table->string('lintang')->nullable();
             $table->string('bujur')->nullable();
 
-
             $table->string('living')->nullable();
             $table->string('religion')->nullable();
             $table->string('citizenship')->nullable();
             $table->string('language')->nullable();
             $table->string('range_home')->nullable();
             $table->string('childstatus')->nullable();
+            $table->string('anak_ke')->nullable();
             $table->string('siblings')->nullable();
 
             $table->string('height')->nullable();

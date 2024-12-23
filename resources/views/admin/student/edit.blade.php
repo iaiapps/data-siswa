@@ -3,9 +3,9 @@
 @section('title', 'Formulir Biodata Siswa')
 @section('content')
     <div class="bg-white p-3 rounded">
-
         @php
-            if (Auth::user()->hasRole('admin')) {
+            $admin = Auth::user()->hasRole('admin');
+            if ($admin) {
                 $route = route('student.update', $student->id);
             } else {
                 $route = route('biodata.update', $student->id);
@@ -18,18 +18,30 @@
 
             <fieldset class="step">
                 <h2 class="mb-3">Edit Biodata Siswa</h2>
-                <div class="row mb-3">
-                    <div class="col-6">
-                        <label class="form-label" for="nis">NIS</label>
-                        <input class="form-control" id="nis" name="nis" type="number" placeholder="nis"
-                            value="{{ $student->nis }}" />
+                @if ($admin)
+                    <div class="row mb-3">
+                        <div class="col-4">
+                            <label class="form-label" for="nis">NIS</label>
+                            <input class="form-control" id="nis" name="nis" type="number" placeholder="nis"
+                                value="{{ $student->nis }}" />
+                        </div>
+                        <div class="col-4">
+                            <label class="form-label" for="nisn">NISN</label>
+                            <input class="form-control" id="nisn" name="nisn" type="number" placeholder="nisn"
+                                value="{{ $student->nisn }}" />
+                        </div>
+                        <div class="col-4">
+                            <label class="form-label" for="year">Tahun Masuk</label>
+                            <select name="year_id" class="form-select" id="year">
+                                <option disabled selected>--- pilih tahun ---</option>
+                                @foreach ($years as $year)
+                                    <option value="{{ $year->id }}">{{ $year->year }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
-                    <div class="col-6">
-                        <label class="form-label" for="nisn">NISN</label>
-                        <input class="form-control" id="nisn" name="nisn" type="number" placeholder="nisn"
-                            value="{{ $student->nisn }}" />
-                    </div>
-                </div>
+                    <hr>
+                @endif
                 <div class="row mb-3">
                     <div class="col">
                         <label class="form-label" for="name">Nama Lengkap</label>
@@ -45,23 +57,24 @@
                             </div>
                         @enderror
                     </div>
-                    {{-- @php
-                        $user = Auth::user()->hasRole('admin');
-                        dd($user);
-                    @endphp --}}
-                    @if (Auth::user()->hasRole('admin'))
-                        <div class="col">
-                            <label class="form-label" for="year">Tahun Masuk</label>
-                            <select name="year_id" class="form-select" id="year">
-                                @foreach ($years as $year)
-                                    <option disabled selected>--- pilih tahun ---</option>
-                                    <option value="{{ $year->id }}">{{ $year->year }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    @endif
                 </div>
-
+                <div class="row mb-3">
+                    <div class="col-4">
+                        <label class="form-label" for="nik">NIK</label>
+                        <input class="form-control" id="nik" name="nik" type="number" placeholder="nik"
+                            value="{{ $student->nik }}" />
+                    </div>
+                    <div class="col-4">
+                        <label class="form-label" for="akta">Akta Kelahiran</label>
+                        <input class="form-control" id="akta" name="akta" type="number" placeholder="akta"
+                            value="{{ $student->akta }}" />
+                    </div>
+                    <div class="col-4">
+                        <label class="form-label" for="kk">KK</label>
+                        <input class="form-control" id="kk" name="kk" type="number" placeholder="kk"
+                            value="{{ $student->kk }}" />
+                    </div>
+                </div>
                 <div class="mb-3">
                     <label class="form-label" for="gender">Jenis Kelamin</label>
                     <select class="form-select" id="gender" name="gender">
@@ -104,7 +117,7 @@
                         </div>
                     </div>
 
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-4">
                         <div class="mb-3">
                             <label class="form-label " for="childstatus">Status Anak</label>
                             <input
@@ -119,7 +132,22 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-4">
+                        <div class="mb-3">
+                            <label class="form-label " for="anak_ke">Anak Ke</label>
+                            <input
+                                class="form-control @error('anak_ke')
+                            is-invalid
+                            @enderror"
+                                name="anak_ke" type="text" id="anak_ke" placeholder="Status Anak" />
+                            @error('anak_ke')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
                         <div class="mb-3">
                             <label class="form-label " for="siblings">Saudara</label>
                             <input
@@ -135,6 +163,7 @@
                         </div>
                     </div>
                 </div>
+                <hr>
                 <div class="mb-3">
                     <label class="form-label " for="alamatjalan">Alamat Jalan</label>
                     <input
@@ -208,7 +237,21 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                        <label class="form-label" for="postal_code">Kode Pos</label>
+                        <input
+                            class="form-control  @error('postal_code')
+                        is-invalid
+                        @enderror"
+                            type="text" id="postal_code" name="postal_code" placeholder="postal_code"
+                            value="{{ $student->sundistrict }}" />
+                        @error('postal_code')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="col-md-4">
                         <label class="form-label" for="kabupaten/kota">Kabupaten / Kota</label>
                         <input
                             class="form-control @error('city')
@@ -222,7 +265,7 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label class="form-label " for="province">Provinsi</label>
                         <input class="form-control @error('province') is-invalid @enderror" type="text"
                             id="province" name="province" placeholder="province" value="{{ $student->province }}" />
@@ -231,6 +274,29 @@
                                 {{ $message }}
                             </div>
                         @enderror
+                    </div>
+                    <div class="border rounded">
+                        <div class="col">
+                            <label class="form-label " for="lintang">Garis Lintang</label>
+                            <input class="form-control @error('lintang') is-invalid @enderror" type="text"
+                                id="lintang" name="lintang" placeholder="lintang" value="{{ $student->lintang }}" />
+                            @error('lintang')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="col">
+                            <label class="form-label " for="bujur">Garis Bujur</label>
+                            <input class="form-control @error('bujur') is-invalid @enderror" type="text"
+                                id="bujur" name="bujur" placeholder="bujur" value="{{ $student->bujur }}" />
+                            @error('bujur')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <small>jika tidak tahu bisa dikosongi atau beri tanda "-"</small>
                     </div>
                 </div>
                 <hr>

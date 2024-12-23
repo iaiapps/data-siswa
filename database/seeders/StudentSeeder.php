@@ -16,6 +16,7 @@ class StudentSeeder extends Seeder
         Student::create([
             'user_id' => 2,
             'name' => 'siswa',
+            'status' => 'aktif',
         ]);
     }
 }

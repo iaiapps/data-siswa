@@ -21,7 +21,7 @@
                 <table id="table" class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Id</th>
+                            <th scope="col">No</th>
                             <th scope="col">Check</th>
                             <th scope="col">Nama Siswa</th>
                             <th scope="col">Jenis Kelamin</th>
@@ -31,7 +31,7 @@
                     <tbody>
                         @foreach ($students as $student)
                             <tr>
-                                <td>{{ $student->id }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>
                                     <input class="form-check-input border border-primary border-2 large" type="checkbox"
                                         name="check[{{ $student->id }}]">

@@ -47,6 +47,7 @@ class UserController extends Controller
         Student::create([
             'user_id' => $user_id,
             'name' => $request->name,
+            'status' => $request->status,
             'nis' => $request->nis,
             'nisn' => $request->nisn,
             'gender' => $request->gender,
@@ -81,7 +82,6 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $data = $request->all();
-        // dd($data);
         $user->update($data);
         $user->syncRoles($request->role);
         return redirect()->route('user.index');
