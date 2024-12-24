@@ -25,24 +25,24 @@
 
     <div class="rounded container text-center mb-3">
         <div class="row">
-            <div class="col-12 col-md-4 bg-primary p-2">
-                <a href="#" class="nav-link btn btn-outline text-white">
+            <div class="col-12 col-md-12 bg-primary p-2">
+                <a href="{{ route('biodata.index') }}" class="nav-link btn btn-outline text-white">
                     <i class="bi bi-person fs-2"></i>
                     <span class="d-block">Profil Biodata Siswa</span>
                 </a>
             </div>
-            <div class="col-12 col-md-4 bg-success p-2">
+            {{-- <div class="col-12 col-md-4 bg-success p-2">
                 <a href="#" class="nav-link btn btn-outline text-light">
                     <i class="bi bi-card-image fs-2"></i>
                     <span class="d-block">Dokumen</span>
                 </a>
-            </div>
-            <div class="col-12 col-md-4 bg-danger p-2">
+            </div> --}}
+            {{-- <div class="col-12 col-md-4 bg-danger p-2">
                 <a href="#" class="nav-link btn btn-outline text-white">
                     <i class="bi bi-calendar-check fs-2"></i>
                     <span class="d-block">Presensi</span>
                 </a>
-            </div>
+            </div> --}}
 
         </div>
     </div>
@@ -94,21 +94,21 @@
                                 <td>{{ $student->birthplace . ', ' . $student->birthdate ?? 'belum ditentukan' }}</td>
                             </tr>
                             <tr>
-                                <td>NIS/NISN</td>
-                                <td>{{ $student->nis . '/ ' . $student->niN ?? 'belum ditentukan' }}</td>
+                                <td>NIS - NISN</td>
+                                <td>{{ $student->nis . ' - ' . $student->nisn ?? 'belum ditentukan' }}</td>
                             </tr>
                             <tr>
                                 <td>Kelas</td>
-                                <td>{{ $student->group->name ?? 'belum ditentukan' }} </td>
+                                <td>{{ $student->group->kelas ?? 'belum ditentukan' }} </td>
                             </tr>
                             <tr>
                                 <td>Nama Ayah</td>
-                                <td>{{ $student->studentparents->nama_ayah ?? 'belum ditentukan' }}
-                                    {{ '$teacher->year_enter' }}</td>
+                                <td>{{ $student->studentparents->nama_ayah ?? 'belum ada data' }}
+                                </td>
                             </tr>
                             <tr>
                                 <td>Nama Ibu</td>
-                                <td>{{ $student->studentparents->nama_ibu ?? 'belum ditentukan' }}</td>
+                                <td>{{ $student->studentparents->nama_ibu ?? 'belum ada data' }}</td>
                             </tr>
                         </tbody>
                     </table>

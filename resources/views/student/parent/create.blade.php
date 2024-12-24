@@ -53,8 +53,8 @@
                             placeholder="pekerjaan ayah" />
                     </div>
                     <div class="col-md-4 col-12 mb-3">
-                        <label cnput class="lass="form-label" for="penghasilan_ayah">Penghasilan Ayah</label>
-                        <iform-control" type="text" id="penghasilan_ayah" name="penghasilan_ayah"
+                        <label input class="form-label" for="penghasilan_ayah">Penghasilan Ayah</label>
+                        <input class="form-control" type="text" id="penghasilan_ayah" name="penghasilan_ayah"
                             placeholder="penghasilan ayah" />
                     </div>
                 </div>

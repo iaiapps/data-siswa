@@ -8,7 +8,7 @@
 
 <aside id="sidebar" class="sidebar position-fixed d-sm-block d-none ">
     <div class="vh-100 text-bg-dark px-sm-2 overflow-scroll">
-        <small class="d-block text-center pt-3 px-1">{{ $user->teacher->name ?? $user->name }}</small>
+        <p class="d-block text-center pt-3 p-1">{{ $user->teacher->name ?? $user->name }}</p>
         <hr>
         @switch($role)
             @case('admin')
@@ -189,7 +189,7 @@
                             <i class="bi bi-person-gear menu-icon"></i>
                             <span class="ms-2 d-none d-sm-inline">Ubah Sandi</span>
                             <br class="d-sm-none d-inline">
-                            <small class="m-0 p-0 d-sm-none d-sm-block">Siswa</small>
+                            <small class="m-0 p-0 d-sm-none d-sm-block">Sandi</small>
                         </a>
                     </li>
                 </ul>
