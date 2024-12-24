@@ -22,7 +22,13 @@
 
                             <td>{{ $student->name }} <input type="text" value="{{ $student->id }}"
                                     name="student_id[{{ $student->id }}]" hidden></td>
-                            <td>{{ $student->gender }}</td>
+                            <td>
+                                @if ($student->gender == 'L')
+                                    Laki-laki
+                                @elseif($student->gender == 'P')
+                                    Perempuan
+                                @endif
+                            </td>
                             {{-- <td>{{ $student->group->kelas ?? 'belum ditentukan' }}</td> --}}
                         </tr>
                     @endforeach

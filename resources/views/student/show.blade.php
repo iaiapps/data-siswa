@@ -4,7 +4,13 @@
 @section('content')
 
     <div class="card p-3">
-        @if (($student->address == null) | ($student->rt == null) | ($student->village == null))
+        @if (
+            ($student->address == null) |
+                ($student->rt == null) |
+                ($student->village == null) |
+                ($student->height == null) |
+                ($student->siblings == null) |
+                ($student->province == null))
             <div class="alert alert-danger text-center">Data belum lengkap !</div>
         @endif
         <p class="fs-2 text-center mb-2">Profil Siswa</p>
@@ -36,7 +42,13 @@
                 @endif
             </div>
             <div class="col-6">
-                <p class="fs-3 m-0">{{ $student->name }} <span class="fs-5">[{{ $student->gender }}]</span></p>
+                <p class="fs-3 m-0">{{ $student->name }} <span class="fs-5">[
+                        @if ($student->gender == 'L')
+                            Laki-laki
+                        @elseif($student->gender == 'P')
+                            Perempuan
+                        @endif]
+                    </span></p>
                 <p class="fs-5 m-0">Nomor Induk Siswa Nasional : {{ $student->nisn }}</p>
                 <p class="fs-5 m-0">Nomor Induk Siswa : {{ $student->nis }}</p>
                 <p class="fs-6 m-0">Diterima pada tahun ajaran {{ $student->year ?? 'belum ditentukan' }}</p>
@@ -45,7 +57,6 @@
                 <a href="{{ route('biodata.edit', $student->id) }}" class="btn btn-primary my-1">edit biodata</a>
             </div>
         </div>
-
         <hr>
         <div class="row">
             <div class="col">

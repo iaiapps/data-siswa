@@ -44,7 +44,13 @@
                                 <td>{{ $student->studentparents->nama_ayah ?? 'belum ditentukan' }}</td>
                                 <td>{{ $student->studentparents->nama_ibu ?? 'belum ditentukan' }}</td>
                                 <td>
-                                    @if (($student->address == null) | ($student->rt == null) | ($student->village == null))
+                                    @if (
+                                        ($student->address == null) |
+                                            ($student->rt == null) |
+                                            ($student->village == null) |
+                                            ($student->height == null) |
+                                            ($student->siblings == null) |
+                                            ($student->province == null))
                                         <small class="text-danger">Data belum lengkap !</small>
                                     @else
                                         <small class="text-primary">Data lengkap !</small>
