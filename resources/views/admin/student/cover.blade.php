@@ -3,37 +3,38 @@
 @section('title', 'Data Induk Siswa')
 @section('content')
 
+    <a href="{{ url()->previous() }}" class="btn btn-primary mb-3">kembali</a>
     <button class="btn btn-primary mb-3" onclick="print()">print</button>
-    <div class="bg-white p-3" id="printarea">
-        <div class="area_a4 p-5">
-            <div class="text-center border-box p-5">
-                <br>
+    <div id="printarea">
+        <div class="area_a4">
+            <div class="text-center border-box">
+                <br><br>
                 <img src="{{ asset('img/logosdit.png') }}" class="logo" alt="logo">
                 <br><br>
                 <p class="fs-4 text-center mb-2 fw-bold">LAPORAN <br>
                     HASIL PENCAPAIAN KOMPETENSI PESERTA DIDIK <br>
                     SEKOLAH DASAR (SD)</p>
-                <br><br><br><br><br><br><br><br>
-                <p class="fs-4 text-center mb-2">Nama Peserta Didik</p>
-                <p class="fs-4 text-center mb-2 "> <span
-                        class="border border-1 border-black w-box fw-bold">{{ $student->name }}</span>
-                </p>
-                <br>
-                <p class="fs-4 text-center mb-2">NISN:</p>
-                <p class="fs-4 text-center mb-2"><span
-                        class="border border-1 border-black w-box fw-bold">{{ $student->nisn }}</span> </p>
-                <br><br><br><br><br><br><br><br><br>
+                <div class="nbox">
+                    <p class="fs-4 text-center mb-2">Nama Peserta Didik</p>
+                    <p class="fs-4 text-center mb-2 "> <span
+                            class="border border-1 border-black w-box fw-bold">{{ $student->name }}</span>
+                    </p>
+                    <br>
+                    <p class="fs-4 text-center mb-2">NISN:</p>
+                    <p class="fs-4 text-center mb-2"><span
+                            class="border border-1 border-black w-box fw-bold">{{ $student->nisn }}</span> </p>
+                </div>
+                <br><br><br><br><br><br>
                 <p class="fs-4 text-center mb-2 fw-bold">KEMENTERIAN PENDIDIKAN DASAR DAN MENENGAH <br> REPUBLIK INDONESIA
                 </p>
             </div>
-
         </div>
-        <div class="area_a4 p-5">
+        <div class="area_a4">
             <div class="border-box">
                 <p class="fs-4 text-center fw-bold mt-2 mb-4">LAPORAN <br>
                     HASIL PENCAPAIAN KOMPETENSI PESERTA DIDIK <br>
                     SEKOLAH DASAR (SD)</p>
-                <div class="px-5">
+                <div class="px-4">
                     <table id="table" class="table align-middle">
                         <tbody>
                             <tr>
@@ -77,11 +78,11 @@
                 </div>
             </div>
         </div>
-        <div class="area_a4 p-5">
+        <div class="area_a4 mb-0">
             <div class="border-box">
                 <p class="fs-4 text-center fw-bold mb-4 mt-2">IDENTITAS PESERTA DIDIK</p>
-                <div class="px-5">
-                    <table class="table table-sm ">
+                <div class="px-4">
+                    <table class="table table-sm align-middle">
                         <tbody>
                             <tr>
                                 <td>Nama Peserta Didik</td>
@@ -182,13 +183,14 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div class="clearfix d-flex">
-                        <div class="pasfoto border border-1 border-black">
+                    <div class="d-flex justify-content-between mt-5 mb-0">
+                        <div class="ms-5 pasfoto border border-1 border-black text-center">
+                            <br><br>
                             <p>PAS FOTO</p>
                             <p>3x4 CM</p>
                         </div>
-                        <div class="text-center float-end me-5 mt-3">
-                            <p class="mb-0">Jember, .......................</p>
+                        <div class="text-center me-5">
+                            <p class="mb-2">Jember, ................................</p>
                             <p>Kepala Sekolah </p>
                             <br><br>
                             <p><u>Elly Nuzulianti, S.S.</u> </p>
@@ -202,25 +204,38 @@
 
 @push('css')
     <style>
-        .logo {
-            width: 120px;
+        td:nth-child(1) {
+            width: 180px;
+        }
+
+        .nbox {
+            padding-top: 10cm;
         }
 
         .area_a4 {
-            width: 210mm;
-            height: 297mm;
-            border: 1px solid rgb(231, 92, 92);
+            width: 21cm;
+            min-height: 29.7cm;
+            padding: 1cm;
+            margin: 1cm auto;
+            border: 1px #D3D3D3 solid;
+            border-radius: 5px;
+            background: white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         }
 
         .border-box {
-            height: 100%;
+            display: block;
+            min-height: 29.7cm;
             border: 2px solid rgb(0, 0, 0);
         }
 
         .w-box {
             display: inline-block;
             width: 500px;
+        }
 
+        .logo {
+            width: 120px;
         }
 
         .pasfoto {
@@ -231,21 +246,47 @@
         @media print {
             body {
                 visibility: hidden;
-                background-color: white !important;
+            }
+
+            .nbox {
+                padding-top: 8cm;
             }
 
             .area_a4 {
-                width: 210mm;
-                height: 297mm;
+                width: 210mm !important;
+                height: 297mm !important;
+                margin: 0;
+                border: initial;
+                border-radius: initial;
+                width: initial;
+                min-height: initial;
+                box-shadow: initial;
+                background: initial;
+                page-break-after: always;
+            }
+
+            .border-box {
+                min-height: 100%;
+                border: 2px solid rgb(0, 0, 0);
+
             }
 
             #printarea {
                 visibility: visible !important;
                 position: absolute !important;
+                z-index: 999;
+                margin: 8px;
                 top: 0;
                 left: 0;
                 border: 2px solid rgb(255, 255, 255);
             }
+        }
+
+        /* ini untuk ukuran a4 ketika print */
+        @page {
+            size: A4;
+            margin: 0;
+            padding: 16px;
         }
     </style>
 @endpush

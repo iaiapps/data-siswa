@@ -119,6 +119,17 @@
                                 placeholder="nama wali" value="{{ old('nama_wali', $studentparent->nama_wali) }}" />
                         </div>
                         <div class="mb-3">
+                            <label class="form-label" for="hp_wali">No. HP Wali</label>
+                            <input class="form-control" type="text" id="hp_wali" name="hp_wali"
+                                placeholder="no. hp wali" value="{{ old('hp_wali', $studentparent->hp_wali) }}" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="alamat_wali">Alamat Wali</label>
+                            <input class="form-control" type="text" id="alamat_wali" name="alamat_wali"
+                                placeholder="no. hp wali"
+                                value="{{ old('alamat_wali', $studentparent->alamat_wali) }}" />
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label" for="hubungan_keluarga">Hubungan Wali dan Ananda</label>
                             <input class="form-control" type="text" id="hubungan_keluarga" name="hubungan_keluarga"
                                 placeholder="hubungan wali dan ananda"
@@ -137,11 +148,7 @@
                                 placeholder="pekerjaan wali"
                                 value="{{ old('pekerjaan_wali', $studentparent->pekerjaan_wali) }}" />
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="hp_wali">No. HP Wali</label>
-                            <input class="form-control" type="text" id="hp_wali" name="hp_wali"
-                                placeholder="no. hp wali" value="{{ old('hp_wali', $studentparent->hp_wali) }}" />
-                        </div>
+
 
                     </fieldset>
                 </div>

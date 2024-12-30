@@ -60,7 +60,7 @@ class StudentParentController extends Controller
      */
     public function edit(StudentParent $studentparent)
     {
-        return view('parent.edit', compact('studentparent'));
+        return view('student.parent.edit', compact('studentparent'));
     }
 
     /**

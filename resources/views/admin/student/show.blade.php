@@ -61,7 +61,7 @@
             <div class="col-md-3 col-12">
                 <a href="{{ route('student.edit', $student->id) }}" class="btn btn-primary my-1">edit biodata</a>
                 <br>
-                <a href="{{ route('student.cover', $student->id) }}" class="btn btn-primary my-1">cetak dokumen</a>
+                <a href="{{ route('student.cover', $student->id) }}" class="btn btn-primary my-1">lihat dokumen</a>
 
             </div>
         </div>
@@ -132,7 +132,7 @@
             </div>
         </div>
         <br>
-        <p class="fs-2 text-center my-2">Data Orang Tua / Wali</p>
+        <p class="fs-3 text-center my-2">Data Orang Tua / Wali</p>
         <hr class="m-0">
 
         @if ($student->studentparents == null)
@@ -145,8 +145,9 @@
                 </a>
             </div>
         @else
+            <a href="{{ route('studentparent.edit', $student->studentparents->id) }}" class="btn btn-primary">edit data</a>
             <div class="row">
-                <div class="col-4">
+                <div class="col-md-4 col-12">
                     <table id="table" class="table align-middle" style="width: 100%">
                         <tbody>
                             <tr>
@@ -181,7 +182,7 @@
                     </table>
                 </div>
 
-                <div class="col-4">
+                <div class="col-md-4 col-12">
                     <table id="table" class="table align-middle" style="width: 100%">
                         <tbody>
                             <tr>
@@ -215,14 +216,21 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-4">
+                <div class="col-md-4 col-12">
                     <table id="table" class="table align-middle" style="width: 100%">
                         <tbody>
                             <tr>
                                 <td>Nama Wali</td>
                                 <td>{{ $student->studentparents->nama_wali }}</td>
                             </tr>
-
+                            <tr>
+                                <td>No. Hp Wali</td>
+                                <td>{{ $student->studentparents->hp_wali }}</td>
+                            </tr>
+                            <tr>
+                                <td>Alamat Wali</td>
+                                <td>{{ $student->studentparents->alamat_wali }}</td>
+                            </tr>
                             <tr>
                                 <td>Hubungan Keluarga</td>
                                 <td>{{ $student->studentparents->hubungan_keluarga }}</td>
@@ -236,10 +244,7 @@
                                 <td>Pekerjaan Wali</td>
                                 <td>{{ $student->studentparents->pekerjaan_wali }}</td>
                             </tr>
-                            <tr>
-                                <td>No. Hp Wali</td>
-                                <td>{{ $student->studentparents->hp_wali }}</td>
-                            </tr>
+
                         </tbody>
                     </table>
                 </div>

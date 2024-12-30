@@ -22,7 +22,10 @@
                         <input class="form-control" type="text" id="hp_ayah" name="hp_ayah"
                             placeholder="no. hp ayah" />
                     </div>
-
+                    <div class="mb-3">
+                        <label class="form-label" for="nik_ayah">NIK Ayah</label>
+                        <input class="form-control" type="text" id="nik_ayah" name="nik_ayah" placeholder="nik ayah" />
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col">
@@ -71,6 +74,10 @@
                         <label class="form-label" for="hp_ibu">No. HP Ibu</label>
                         <input class="form-control" type="text" id="hp_ibu" name="hp_ibu" placeholder="no. hp ibu" />
                     </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="nik_ibu">NIK Ayah</label>
+                    <input class="form-control" type="text" id="nik_ibu" name="nik_ibu" placeholder="nik ibu" />
                 </div>
 
                 <div class="row">
@@ -125,6 +132,11 @@
                         <input class="form-control" type="text" id="hp_wali" name="hp_wali"
                             placeholder="no. hp wali" />
                     </div>
+                </div>
+                <div class=" mb-3">
+                    <label class="form-label" for="hp_wali">Alamat Wali</label>
+                    <input class="form-control" type="text" id="alamat_wali" name="alamat_wali"
+                        placeholder="alamat wali" />
                 </div>
                 <div class="row">
                     <div class="col-md-4 col-12">

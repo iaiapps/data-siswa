@@ -34,11 +34,11 @@ return new class extends Migration
             $table->string('hp_ibu')->nullable();
 
             $table->string('nama_wali')->nullable();
+            $table->string('hp_wali')->nullable();
             $table->string('alamat_wali')->nullable();
             $table->string('hubungan_keluarga')->nullable();
             $table->string('pendidikan_wali')->nullable();
             $table->string('pekerjaan_wali')->nullable();
-            $table->string('hp_wali')->nullable();
             $table->timestamps();
         });
     }

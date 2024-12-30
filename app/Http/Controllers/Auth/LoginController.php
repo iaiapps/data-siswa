@@ -34,9 +34,11 @@ class LoginController extends Controller
      */
 
     // username use email and name
+    // jangan lupa ganti "username" di form login
     public function username()
     {
         $login = request()->input('username');
+        // dd($login);
         if (is_numeric($login)) {
             $field = 'phone';
         } elseif (filter_var($login, FILTER_VALIDATE_EMAIL)) {
