@@ -80,6 +80,13 @@ class StudentController extends Controller
         //
     }
 
+    // cover raport student
+    public function cover($id)
+    {
+        $student = Student::find($id);
+        return view('admin.student.cover', compact('student'));
+    }
+
     // --- handle dari user student --- //
     public function biodata()
     {

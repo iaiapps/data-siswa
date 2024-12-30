@@ -32,6 +32,22 @@ class LoginController extends Controller
      *
      * @return void
      */
+
+    // username use email and name
+    public function username()
+    {
+        $login = request()->input('username');
+        if (is_numeric($login)) {
+            $field = 'phone';
+        } elseif (filter_var($login, FILTER_VALIDATE_EMAIL)) {
+            $field = 'email';
+        } else {
+            $field = 'name';
+        }
+        request()->merge([$field => $login]);
+        return $field;
+    }
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');

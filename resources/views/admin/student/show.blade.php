@@ -13,10 +13,10 @@
                 ($student->province == null))
             <div class="alert alert-danger text-center">Data belum lengkap !</div>
         @endif
-        <p class="fs-2 text-center mb-2">Profil Siswa</p>
+        <p class="fs-3 text-center mb-2">Profil Siswa</p>
         <hr class="m-0">
         <div class="row align-items-center">
-            <div class="col-3 text-center">
+            <div class="col-md-3 col-12 text-center">
                 @if (is_null($student->documents->where('type', 'profil')->first()))
                     <i class="bi bi-person-circle display-1"></i><br>
                     <a class="btn btn-sm btn-primary" href="{{ route('uploadfoto', $student->id) }}">upload foto</a>
@@ -41,8 +41,8 @@
                     </div>
                 @endif
             </div>
-            <div class="col-6">
-                <p class="fs-3 m-0">{{ $student->name }} <span class="fs-5">
+            <div class="col-md-6 col-12">
+                <p class="fs-4 m-0">{{ $student->name }} <span class="fs-5">
                         [
                         @if ($student->gender == 'L')
                             Laki-laki
@@ -51,17 +51,17 @@
                         @endif
                         ]
                     </span></p>
-                <p class="fs-5 m-0"> Status Siswa : {{ $student->status == 'aktif' ? 'Aktif' : 'Lulus' }}
+                <p class="fs-5 m-0"> Status : {{ $student->status == 'aktif' ? 'Aktif' : 'Lulus' }}
                     {{ isset($student->graduation->year->year) ? $student->graduation->year->year : '' }}
                 </p>
-                <p class="fs-5 m-0">Nomor Induk Siswa Nasional : {{ $student->nisn }}</p>
-                <p class="fs-5 m-0">Nomor Induk Siswa : {{ $student->nis }}</p>
+                <p class="fs-5 m-0">Nomor Induk Siswa Nasional (NISN): {{ $student->nisn }}</p>
+                <p class="fs-5 m-0">Nomor Induk Siswa (NIS): {{ $student->nis }}</p>
                 <p class="fs-6 m-0">Diterima pada tahun ajaran {{ $student->year->year ?? 'belum ditentukan' }}</p>
             </div>
-            <div class="col-3">
+            <div class="col-md-3 col-12">
                 <a href="{{ route('student.edit', $student->id) }}" class="btn btn-primary my-1">edit biodata</a>
                 <br>
-                <a href="#" class="btn btn-primary my-1">cetak dokumen</a>
+                <a href="{{ route('student.cover', $student->id) }}" class="btn btn-primary my-1">cetak dokumen</a>
 
             </div>
         </div>
@@ -253,6 +253,12 @@
     <style>
         .profil {
             width: 120px;
+        }
+
+        @media (max-width: 800px) {
+            body {
+                background-color: rgb(9, 171, 225) !important;
+            }
         }
     </style>
 @endpush

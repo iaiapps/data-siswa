@@ -29,6 +29,7 @@ Route::middleware('auth')->group(function () {
         Route::put('resetpass/{id}', [UserController::class, 'resetpass'])->name('reset.pass');
         // siswa
         Route::resource('student', StudentController::class);
+        Route::get('student-cover/{id}', [StudentController::class, 'cover'])->name('student.cover');
 
         // kelas
         Route::resource('group', GroupController::class);
