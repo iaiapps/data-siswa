@@ -69,8 +69,6 @@ class GroupController extends Controller
         //
     }
 
-
-
     // ini fungsi siswa dan kelas
     public function showstudentgroup($id)
     {
@@ -101,5 +99,13 @@ class GroupController extends Controller
             }
         }
         return redirect()->back();
+    }
+
+    // show presensi
+    public function showpresensi($id)
+    {
+        $group = Group::where('id', $id)->first();
+        $students = Student::where('group_id', $id)->get();
+        return view('admin.group.showpresensi', compact('students', 'group'));
     }
 }

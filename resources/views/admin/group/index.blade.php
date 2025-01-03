@@ -15,6 +15,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Kelas</th>
                         <th scope="col">Jumlah Siswa</th>
+                        <th scope="col">Lembar Presensi</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -34,6 +35,7 @@
                                     class="btn btn-warning btn-sm">edit
                                     siswa</a>
                             </td>
+                            <td><a href="{{ route('showpresensi', ['id' => $group->id]) }}">presensi</a></td>
                             <td>
                                 <a href="{{ route('group.edit', $group->id) }}" class="btn btn-warning btn-sm">edit
                                     kelas</a>

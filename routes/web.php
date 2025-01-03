@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
         Route::get('showstudentgroup/{id}', [GroupController::class, 'showstudentgroup'])->name('showstudentgroup');
         Route::get('addstudentgroup/{id}', [GroupController::class, 'addstudentgroup'])->name('addstudentgroup');
         Route::put('studentgroup', [GroupController::class, 'storestudentgroup'])->name('storestudentgroup');
+        Route::get('showpresensi/{id}', [GroupController::class, 'showpresensi'])->name('showpresensi');
 
         // pelajaran
         Route::resource('subject', SubjectController::class);
