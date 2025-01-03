@@ -143,7 +143,7 @@
         <style>
             .tn {
                 display: block;
-                width: 220px;
+                width: 230px;
             }
 
             .wta {
