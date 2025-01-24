@@ -62,6 +62,7 @@
                 <a href="{{ route('student.edit', $student->id) }}" class="btn btn-primary my-1">edit biodata</a>
                 <br>
                 <a href="{{ route('student.cover', $student->id) }}" class="btn btn-primary my-1">lihat dokumen</a>
+                <a href="{{ route('student.binduk', $student->id) }}" class="btn btn-primary my-1">Buku Induk</a>
 
             </div>
         </div>

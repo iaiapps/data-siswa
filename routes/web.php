@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
         // siswa
         Route::resource('student', StudentController::class);
         Route::get('student-cover/{id}', [StudentController::class, 'cover'])->name('student.cover');
+        Route::get('student-binduk/{id}', [StudentController::class, 'binduk'])->name('student.binduk');
 
         // kelas
         Route::resource('group', GroupController::class);

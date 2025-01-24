@@ -86,6 +86,12 @@ class StudentController extends Controller
         $student = Student::find($id);
         return view('admin.student.cover', compact('student'));
     }
+    // cover binduk student
+    public function binduk($id)
+    {
+        $student = Student::find($id);
+        return view('admin.student.binduk', compact('student'));
+    }
 
     // --- handle dari user student --- //
     public function biodata()
