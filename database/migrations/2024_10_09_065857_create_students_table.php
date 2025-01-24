@@ -16,42 +16,46 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('year_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('group_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->string('name');
-            $table->string('status');
+
+            // data diri
+            $table->string('nama');
+            $table->string('status_siswa');
             $table->string('nis')->nullable();
             $table->string('nisn')->nullable();
             $table->string('nik')->nullable();
             $table->string('kk')->nullable();
             $table->string('akta')->nullable();
-            $table->string('birthplace')->nullable();
-            $table->string('birthdate')->nullable();
-            $table->string('gender')->nullable();
+            $table->string('tempat_lahir')->nullable();
+            $table->string('tanggal_lahir')->nullable();
+            $table->string('jenis_kelamin')->nullable();
 
-
-            $table->string('address')->nullable();
+            // alamat
+            $table->string('alamat')->nullable();
             $table->string('rt')->nullable();
             $table->string('rw')->nullable();
-            $table->string('village')->nullable();
-            $table->string('subdistrict')->nullable();
-            $table->string('postal_code')->nullable();
-            $table->string('city')->nullable();
-            $table->string('province')->nullable();
+            $table->string('desa_kelurahan')->nullable();
+            $table->string('kecamatan')->nullable();
+            $table->string('kota_kabupaten')->nullable();
+            $table->string('provinsi')->nullable();
+            $table->string('kode_pos')->nullable();
             $table->string('lintang')->nullable();
             $table->string('bujur')->nullable();
 
-            $table->string('living')->nullable();
-            $table->string('religion')->nullable();
-            $table->string('citizenship')->nullable();
-            $table->string('language')->nullable();
-            $table->string('range_home')->nullable();
-            $table->string('childstatus')->nullable();
+            // keadaan siswa
+            $table->string('tinggal_bersama')->nullable();
+            $table->string('agama')->nullable();
+            $table->string('kewarganegaraan')->nullable();
+            $table->string('bahasa')->nullable();
+            $table->string('jarak_rumah')->nullable();
+            $table->string('status_anak')->nullable();
             $table->string('anak_ke')->nullable();
-            $table->string('siblings')->nullable();
+            $table->string('saudara')->nullable();
 
-            $table->string('height')->nullable();
-            $table->string('weight')->nullable();
-            $table->string('blood')->nullable();
-            $table->string('medical')->nullable();
+            // data fisik
+            $table->string('tinggi')->nullable();
+            $table->string('berat')->nullable();
+            $table->string('golongan_darah')->nullable();
+            $table->string('riwayat_kesehatan')->nullable();
 
             $table->timestamps();
         });

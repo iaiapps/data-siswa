@@ -17,13 +17,13 @@ class SubjectSeeder extends Seeder
             'pelajaran' => 'PAI',
         ]);
         Subject::create([
+            'pelajaran' => 'Pendidikan Pancasila',
+        ]);
+        Subject::create([
             'pelajaran' => 'Matematika',
         ]);
         Subject::create([
             'pelajaran' => 'Bahasa Indonesia',
-        ]);
-        Subject::create([
-            'pelajaran' => 'Pendidikan Pancasila',
         ]);
         Subject::create([
             'pelajaran' => 'IPAS',
@@ -32,7 +32,7 @@ class SubjectSeeder extends Seeder
             'pelajaran' => 'SDB',
         ]);
         Subject::create([
-            'pelajaran' => 'Tahfidz',
+            'pelajaran' => 'PJOK',
         ]);
         Subject::create([
             'pelajaran' => 'Bahasa Daerah',
@@ -41,7 +41,7 @@ class SubjectSeeder extends Seeder
             'pelajaran' => 'Bahasa Inggris',
         ]);
         Subject::create([
-            'pelajaran' => 'PJOK',
+            'pelajaran' => 'Tahfidz',
         ]);
         Subject::create([
             'pelajaran' => 'SKI',

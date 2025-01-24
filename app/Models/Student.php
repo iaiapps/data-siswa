@@ -16,6 +16,11 @@ class Student extends Model
         return $this->hasOne(StudentParent::class);
     }
 
+    public function studentschools()
+    {
+        return $this->hasOne(StudentSchool::class);
+    }
+
     public function documents()
     {
         return $this->hasMany(Document::class);
