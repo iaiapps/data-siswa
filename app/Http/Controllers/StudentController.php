@@ -17,7 +17,7 @@ class StudentController extends Controller
     public function index()
     {
         $data = Student::all();
-        $students = $data->where('status', 'aktif');
+        $students = $data->where('status_siswa', 'aktif');
 
         return view('admin.student.index', compact('students'));
     }

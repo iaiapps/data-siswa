@@ -30,9 +30,9 @@
                         @foreach ($students as $student)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $student->name }}</td>
+                                <td>{{ $student->nama }}</td>
                                 <td>
-                                    {{ $student->status == 'aktif' ? 'Aktif' : 'Lulus' }}
+                                    {{ $student->status_siswa == 'aktif' ? 'Aktif' : 'Lulus' }}
                                 </td>
                                 <td>
                                     {{ $student->group->kelas ?? 'belum ditentukan' }}

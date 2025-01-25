@@ -185,9 +185,14 @@
                     </table>
                     <div class="d-flex justify-content-between mt-5 mb-0">
                         <div class="ms-5 pasfoto border border-1 border-black text-center">
-                            <br><br>
-                            <p>PAS FOTO</p>
-                            <p>3x4 CM</p>
+                            @if (is_null($student->documents->where('type', 'profil')->first()))
+                                <br><br>
+                                <p>PAS FOTO</p>
+                                <p>3x4 CM</p>
+                            @else
+                                <img src="{{ asset('storage/img-document/' . $student->documents->where('type', 'profil')->first()->file) }}"
+                                    alt="img">
+                            @endif
                         </div>
                         <div class="text-center me-5">
                             <p class="mb-2">Jember, ................................</p>

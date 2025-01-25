@@ -231,7 +231,7 @@
                 </table>
 
                 <table class="table table-sm align-middle ">
-                    6. MENINGGALKAN SEKOLAH
+                    7. MENINGGALKAN SEKOLAH
                     <tbody>
                         <tr>
                             <td colspan="2">A. Tamat Belajar</td>
