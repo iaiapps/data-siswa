@@ -1,19 +1,20 @@
 <?php
 
-use App\Http\Controllers\ConstitutionController;
-use App\Http\Controllers\DocumentController;
-use App\Http\Controllers\GraduationController;
-use App\Http\Controllers\GroupController;
+use App\Models\ScoreCollection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ScoreCollectionController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\StudentController;
-use App\Http\Controllers\StudentParentController;
-use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\YearController;
-use App\Models\ScoreCollection;
+use App\Http\Controllers\GroupController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\GraduationController;
+use App\Http\Controllers\ConstitutionController;
+use App\Http\Controllers\StudentParentController;
+use App\Http\Controllers\StudentSchoolController;
+use App\Http\Controllers\ScoreCollectionController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,6 +32,9 @@ Route::middleware('auth')->group(function () {
         Route::resource('student', StudentController::class);
         Route::get('student-cover/{id}', [StudentController::class, 'cover'])->name('student.cover');
         Route::get('student-binduk/{id}', [StudentController::class, 'binduk'])->name('student.binduk');
+        // data sekolah siswa
+        Route::get('student-school/{id}', [StudentSchoolController::class, 'create'])->name('studentschool.create');
+        Route::post('student-school', [StudentSchoolController::class, 'store'])->name('studentschool.store');
 
         // kelas
         Route::resource('group', GroupController::class);

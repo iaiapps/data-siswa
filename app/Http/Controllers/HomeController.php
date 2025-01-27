@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Group;
 use Carbon\Carbon;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -44,9 +45,12 @@ class HomeController extends Controller
 
         // now
         $now = Carbon::now();
+        // kelas
+        $group = Group::all();
+
         switch ($role) {
             case 'admin':
-                return view('home.home', compact('students', 'now', 'name'));
+                return view('home.home', compact('students', 'now', 'name', 'group'));
                 break;
 
             case 'siswa':

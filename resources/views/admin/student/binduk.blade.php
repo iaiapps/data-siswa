@@ -178,41 +178,41 @@
                     </tbody>
                 </table>
                 <table class="table table-sm align-middle ">
-                    5. Perkembangan Siswa
+                    Perkembangan Siswa
                     <tbody>
                         <tr>
                             <td colspan="2">A. Masuk Menjadi Siswa Baru</td>
                         </tr>
                         <tr>
                             <td><span class="me-1">1.</span> Pendidikan Sebelumnya</td>
-                            <td>: </td>
+                            <td>: {{ $student->studentschools->siswa_baru_pendidikan_sebelumnya ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td><span class="me-1">2.</span> Nama Sekolah</td>
-                            <td>: </td>
+                            <td>: {{ $student->studentschools->siswa_baru_nama_sekolah ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td><span class="me-1">3.</span> Alamat</td>
-                            <td>: </td>
+                            <td>: {{ $student->studentschools->siswa_baru_alamat_sekolah ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td colspan="2" class="pt-3">B. Pendidikan dari sekolah lain</td>
                         </tr>
                         <tr>
                             <td><span class="me-1">1.</span>Nama Sekolah Asal </td>
-                            <td>: </td>
+                            <td>: {{ $student->studentschools->siswa_pindahan_nama_sekolah_asal ?? '-' }} </td>
                         </tr>
                         <tr>
-                            <td><span class="me-1">2.</span> Dari Kelas</td>
-                            <td>: </td>
+                            <td><span class="me-1">2.</span>Dari Kelas</td>
+                            <td>: {{ $student->studentschools->siswa_pindahan_dari_kelas ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td><span class="me-1">3.</span>Diteriama Tanggal</td>
-                            <td>: </td>
+                            <td>: {{ $student->studentschools->siswa_pindahan_diterima_tanggal ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td><span class="me-1">4.</span>Di Kelas</td>
-                            <td>: </td>
+                            <td>: {{ $student->studentschools->siswa_pindahan_di_kelas ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td colspan="2" class="pt-3">C. Laporan Hasil Pencapaian Kompetensi Peserta Didik
@@ -225,11 +225,10 @@
                     <tbody>
                         <tr>
                             <td><span class="me-1">a.</span> Jenis Beasiswa</td>
-                            <td>: {{ $student->studentparents->nama_ayah ?? 'belum ada data' }}</td>
+                            <td>: {{ $student->studentschools->beasiswa ?? '-' }}</td>
                         </tr>
                     </tbody>
                 </table>
-
                 <table class="table table-sm align-middle ">
                     7. MENINGGALKAN SEKOLAH
                     <tbody>
@@ -238,41 +237,41 @@
                         </tr>
                         <tr>
                             <td><span class="me-1">1.</span> Tahun/No STTB Ijazah</td>
-                            <td>: {{ $student->studentparents->pendidikan_ayah ?? 'belum ada data' }}</td>
+                            <td>: {{ $student->studentschools->lulus_no_ijazah ?? '-' }}</td>
                         </tr>
                         <tr>
-                            <td><span class="me-1">2.</span> Melanjutkan sekolah/di</td>
-                            <td>: {{ $student->studentparents->pekerjaan_ayah ?? 'belum ada data' }}</td>
+                            <td><span class="me-1">2.</span> Melanjutkan sekolah di</td>
+                            <td>: {{ $student->studentschools->lulus_lanjut_sekolah ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td colspan="2" class="pt-3">B. Pindah Sekolah</td>
                         </tr>
                         <tr>
                             <td><span class="me-1">1.</span> Dari Kelas</td>
-                            <td>: {{ $student->studentparents->hp_ayah ?? 'belum ada data' }}</td>
+                            <td>: {{ $student->studentschools->pindah_sekolah_dari_kelas ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td><span class="me-1">2.</span> Ke Sekolah</td>
-                            <td>: {{ $student->studentparents->nama_ibu ?? 'belum ada data' }}</td>
+                            <td>: {{ $student->studentschools->pindah_sekolah_ke_sekolah ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td><span class="me-1">3.</span> Ke Kelas</td>
-                            <td>: {{ $student->studentparents->pendidikan_ibu ?? 'belum ada data' }}</td>
+                            <td>: {{ $student->studentschools->pindah_sekolah_ke_kelas ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td><span class="me-1">4.</span> Alasan</td>
-                            <td>: {{ $student->studentparents->pekerjaan_ibu ?? 'belum ada data' }}</td>
+                            <td>: {{ $student->studentschools->pindah_sekolah_alasan ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td colspan="2" class="pt-3">C. Keluar Sekolah</td>
                         </tr>
                         <tr>
                             <td><span class="me-1">1.</span> Tanggal</td>
-                            <td>: {{ $student->studentparents->hp_ibu ?? 'belum ada data' }}</td>
+                            <td>: {{ $student->studentparents->keluar_sekolah_tanggal ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td><span class="me-1">2.</span> Alasan</td>
-                            <td>: {{ $student->studentparents->hp_ibu ?? 'belum ada data' }}</td>
+                            <td>: {{ $student->studentparents->keluar_sekolah_tanggal ?? '-' }}</td>
                         </tr>
                     </tbody>
                 </table>

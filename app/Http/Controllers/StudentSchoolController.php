@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\StudentSchool;
+use App\Models\Year;
+use App\Models\Student;
+use App\Models\Graduation;
 use Illuminate\Http\Request;
+use App\Models\StudentSchool;
 
 class StudentSchoolController extends Controller
 {
@@ -18,9 +21,12 @@ class StudentSchoolController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $student_id = Student::find($id)->id;
+        $years = Year::all();
+        // dd($student);
+        return view('admin.student.sschool.create', compact('student_id', 'years'));
     }
 
     /**
@@ -28,7 +34,21 @@ class StudentSchoolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $student_id = $request->student_id;
+        $year_id = $request->year_id;
+
+        StudentSchool::create($data);
+        Graduation::create([
+            'student_id' => $student_id,
+            'year_id' => $year_id,
+        ]);
+        Student::where('id', '=', $student_id)->update([
+            'status' => 'lulus',
+            'group_id' => null,
+        ]);
+
+        return redirect()->route('student.show', $student_id)->withInput(['tab' => 'school']);
     }
 
     /**

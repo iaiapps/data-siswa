@@ -6,7 +6,6 @@
 
         <form action="{{ route('studentparent.store') }}" method="POST">
             @csrf
-
             <input type="hidden" name="student_id" value="{{ $id }}">
             <fieldset class="step">
                 <p class="fw-bold fs-5">Formulir Data Ayah</p>

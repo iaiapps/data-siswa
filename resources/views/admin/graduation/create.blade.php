@@ -51,7 +51,7 @@
                                         type="checkbox" name="check[{{ $s->id }}]">
                                 </td>
                                 <td> <input type="text" value="{{ $s->id }}"
-                                        name="student_id[{{ $s->id }}]" hidden> {{ $s->name }}
+                                        name="student_id[{{ $s->id }}]" hidden> {{ $s->nama }}
                                 </td>
                                 <td>{{ $s->group->kelas }}</td>
                             </tr>

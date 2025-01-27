@@ -16,19 +16,7 @@
     </div>
 
     <div id="info" class="row gx-3 mb-3">
-        {{-- <div class="col-12 col-sm-6">
-            <div class="mt-3 card rounded p-3 flex-row justify-content-between align-items-center">
-                <div class="d-flex flex-row align-items-center">
-                    <span class="fs-4 py-0 px-2 btn btn-outline-primary">
-                        <i class="bi bi-person-check"></i>
-                    </span>
-                    <span class="ms-2 fs-5 "> Total Guru </span>
-                </div>
-                <button class="bg-primary btn btn-primary p-1 px-2 fs-5 ">{{ '$teacher->count()' }}</button>
-            </div>
-        </div> --}}
-
-        <div class="col-12 col-sm-12">
+        <div class="col-12 col-sm-6">
             <div class="mt-3 card rounded p-3 flex-row justify-content-between align-items-center">
                 <div class="d-flex flex-row align-items-center">
                     <span class="fs-4 py-0 px-2 btn btn-outline-primary">
@@ -37,6 +25,17 @@
                     <span class="ms-2 fs-5 "> Total Siswa </span>
                 </div>
                 <button class="bg-primary btn btn-primary p-1 px-2 fs-5 ">{{ $students->count() }}</button>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6">
+            <div class="mt-3 card rounded p-3 flex-row justify-content-between align-items-center">
+                <div class="d-flex flex-row align-items-center">
+                    <span class="fs-4 py-0 px-2 btn btn-outline-primary">
+                        <i class="bi bi-easel"></i>
+                    </span>
+                    <span class="ms-2 fs-5 "> Total Kelas </span>
+                </div>
+                <button class="bg-primary btn btn-primary p-1 px-2 fs-5 ">{{ $group->count() }}</button>
             </div>
         </div>
     </div>

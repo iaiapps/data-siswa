@@ -27,7 +27,7 @@ class GraduationController extends Controller
         $years = Year::all();
         $groups = Group::where('id', '21')->orWhere('id', '22')->orWhere('id', '23')->orWhere('id', '24')->get();
         if ($request->kelas) {
-            $student_g6 = Student::where('status', 'aktif')->where('group_id',  $request->kelas)->get();
+            $student_g6 = Student::where('status_siswa', 'aktif')->where('group_id',  $request->kelas)->get();
         } else {
             $student_g6 = null;
         }

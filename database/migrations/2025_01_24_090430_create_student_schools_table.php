@@ -30,8 +30,9 @@ return new class extends Migration
             $table->string('beasiswa')->nullable();
 
             // tamat belajar
-            $table->string('lulus_no_ijazah')->nullable();
-            $table->string('lulus_lanjut_sekolah')->nullable();
+            // $table->foreignId('year_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
+            // $table->string('lulus_no_ijazah')->nullable();
+            // $table->string('lulus_lanjut_sekolah')->nullable();
 
             // pindah sekolah
             $table->string('pindah_sekolah_dari_kelas')->nullable();
