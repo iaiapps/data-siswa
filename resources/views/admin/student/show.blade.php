@@ -15,12 +15,13 @@
     @endif
 
     <div class="card mb-3">
-        <div class="card-body">
-            <p class="fs-4 text-center mb-0">Data Siswa</p>
+        <div class="card-body position-relative">
+            <p class="fs-4 text-center mb-0 ">Data Siswa </p>
         </div>
     </div>
     <div class="row gx-3">
         <div class="col-md-4 mb-3">
+
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex flex-column align-items-center ">
@@ -79,6 +80,9 @@
                             </table>
                         </div>
                     </div>
+                    <p class="text-center kecil mb-0">
+                        *berdasarkan Dapodik SDIT Harapan Umat Jember
+                    </p>
                 </div>
             </div>
             <div class="card mt-3">
@@ -114,6 +118,7 @@
                                 aria-selected="false">Data
                                 Sekolah
                             </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -520,11 +525,11 @@
             margin: 0
         }
 
-        @media (max-width: 800px) {
-            body {
-                background-color: rgb(9, 171, 225) !important;
-            }
+        .kecil {
+            font-size: 12px;
+        }
 
+        @media (max-width: 800px) {
             .profil {
                 width: 120px;
             }

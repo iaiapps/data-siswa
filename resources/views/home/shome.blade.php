@@ -5,25 +5,22 @@
 @section('content')
 
     @if (($student->address == null) | ($student->rt == null) | ($student->village == null))
-        <div class="alert alert-danger text-center">Data belum lengkap !</div>
-        <div class="alert alert-danger alert-dismissible fade show py-2 text-center" role="alert">
-            <span class="m-0">Identitas anda belum lengkap!</span>
+        <div class="alert alert-danger alert-dismissible fade show py-2" role="alert">
+            <p class="m-0">Identitas anda belum lengkap!</p>
             <a href="{{ route('biodata.index') }}" class="btn btn-dark btn-sm ms-md-2">lihat biodata</a>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
 
-    <div class="container bg-white rounded p-3 mb-3">
+    <div class="bg-white rounded p-3 mb-3">
         <p class="fs-4 text-center m-0">
-            Selamat Datang di Pusat Data Siswa SDIT Harapan Umat Jember
-        </p>
-    </div>
-    <div class="container bg-white rounded p-3 mb-3">
-        <p class="fs-4 text-center m-0">
-            Ananda {{ $student->name }}
+            Selamat Datang Ananda <span class="fw-bold text-capitalize">{{ $student->name ?? $student->user->name }}</span>
+            di Pusat Data
+            Siswa SDIT Harapan Umat Jember
         </p>
     </div>
 
-    <div class="rounded container text-center mb-3">
+    {{-- <div class="rounded text-center mb-3">
         <div class="row">
             <div class="col-12 col-md-12 bg-primary p-2">
                 <a href="{{ route('biodata.index') }}" class="nav-link btn btn-outline text-white">
@@ -31,30 +28,17 @@
                     <span class="d-block">Profil Biodata Siswa</span>
                 </a>
             </div>
-            {{-- <div class="col-12 col-md-4 bg-success p-2">
-                <a href="#" class="nav-link btn btn-outline text-light">
-                    <i class="bi bi-card-image fs-2"></i>
-                    <span class="d-block">Dokumen</span>
-                </a>
-            </div> --}}
-            {{-- <div class="col-12 col-md-4 bg-danger p-2">
-                <a href="#" class="nav-link btn btn-outline text-white">
-                    <i class="bi bi-calendar-check fs-2"></i>
-                    <span class="d-block">Presensi</span>
-                </a>
-            </div> --}}
-
         </div>
-    </div>
+    </div> --}}
 
-    <div class="bg-white rounded container">
-        <p class="fs-4 text-center pt-3">Profil Pengguna</p>
+    <div class="card p-3">
+        <p class="fs-4 text-center pt-3 mb-0">Ringkasan Profil Pengguna</p>
         <hr>
         <div class="row">
-            <div class="col-12 col-md-4 p-3 d-flex justify-content-center align-items-center">
-                <div class="text-center   ">
+            <div class="col-12 col-md-5 p-3 d-flex flex-column justify-content-center align-items-center">
+                <div class="text-center">
                     @if (is_null($student->documents->where('type', 'profil')->first()))
-                        <i class="bi bi-person-circle display-1 "></i><br>
+                        <i class="bi bi-person-circle imgs "></i><br>
                         <a class="btn btn-sm btn-primary" href="{{ route('uploadfoto', $student->id) }}">upload foto</a>
                     @else
                         <img class="profil mb-3"
@@ -77,43 +61,58 @@
                         </div>
                     @endif
                 </div>
-            </div>
 
-
-            <div class="col-md-8 col-12 p-3">
-                <div class="table-responsive">
-                    <table id="table" class="table table-striped align-middle">
+                <div class="mt-3">
+                    <table class="table align-middle">
                         <tbody>
-
                             <tr>
-                                <td>Nama Lengkap</td>
-                                <td>{{ $student->name ?? 'belum ditentukan' }}</td>
+                                <td colspan="2" class="fs-5">{{ $student->name ?? 'belum ditentukan' }}</td>
                             </tr>
                             <tr>
-                                <td>Tempat, Tanggal Lahir</td>
-                                <td>{{ $student->birthplace . ', ' . $student->birthdate ?? 'belum ditentukan' }}</td>
-                            </tr>
-                            <tr>
-                                <td>NIS - NISN</td>
-                                <td>{{ $student->nis . ' - ' . $student->nisn ?? 'belum ditentukan' }}</td>
-                            </tr>
-                            <tr>
-                                <td>Kelas</td>
-                                <td>{{ $student->group->kelas ?? 'belum ditentukan' }} </td>
-                            </tr>
-                            <tr>
-                                <td>Nama Ayah</td>
-                                <td>{{ $student->studentparents->nama_ayah ?? 'belum ada data' }}
+                                <td>Status</td>
+                                <td>: {{ $student->status_siswa == 'aktif' ? 'Aktif' : 'Lulus' }}
+                                    {{ isset($student->graduation->year->year) ? $student->graduation->year->year : '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>Nama Ibu</td>
-                                <td>{{ $student->studentparents->nama_ibu ?? 'belum ada data' }}</td>
+                                <td>Kelas</td>
+                                <td>: {{ $student->group->kelas ?? 'belum ditentukan' }} </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+            </div>
 
+            <div class="col-md-7 col-12 p-3">
+                <table id="table" class="table table-striped align-middle">
+                    <tbody>
+                        <tr>
+                            <td>Tempat, Tanggal Lahir</td>
+                            <td>: {{ $student->birthplace . ', ' . $student->birthdate ?? 'belum ditentukan' }}</td>
+                        </tr>
+                        <tr>
+                            <td>NIS - NISN</td>
+                            <td>: {{ $student->nis . ' - ' . $student->nisn ?? 'belum ditentukan' }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Nama Ayah</td>
+                            <td>: {{ $student->studentparents->nama_ayah ?? 'belum ada data' }} </td>
+                        </tr>
+                        <tr>
+                            <td>Nama Ibu</td>
+                            <td>: {{ $student->studentparents->nama_ibu ?? 'belum ada data' }}</td>
+                        </tr>
+                        <tr>
+                            <td>Alamat</td>
+
+                            <td>: {{ $student->alamat }} | rt {{ $student->rt }} / rw {{ $student->rw }} |
+                                {{ $student->desa_kelurahan }} | {{ $student->kecamatan }} |
+                                {{ $student->kota_kabupaten }}|{{ $student->provinsi }} </td>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -123,6 +122,12 @@
     <style>
         .profil {
             width: 170px;
+        }
+
+        .imgs {
+            font-size: 100px;
+            padding: 0;
+            margin: 0
         }
     </style>
 @endpush
