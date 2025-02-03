@@ -8,7 +8,7 @@
 
 <aside id="sidebar" class="sidebar position-fixed d-sm-block d-none ">
     <div class="vh-100 text-bg-dark px-sm-2 overflow-scroll">
-        <p class="d-block text-center pt-3 p-1">{{ $user->teacher->name ?? $user->name }}</p>
+        <p class="d-block text-center pt-3 p-1">{{ $user->student->nama ?? $user->name }}</p>
         <hr>
         @switch($role)
             @case('admin')
