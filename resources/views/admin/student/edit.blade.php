@@ -20,17 +20,17 @@
                 <h2 class="mb-3">Edit Biodata Siswa</h2>
                 @if ($admin)
                     <div class="row mb-3">
-                        <div class="col-4">
+                        <div class="col-md-4 col-12">
                             <label class="form-label" for="nis">NIS</label>
                             <input class="form-control" id="nis" name="nis" type="number" placeholder="nis"
                                 value="{{ $student->nis }}" />
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4 col-12">
                             <label class="form-label" for="nisn">NISN</label>
                             <input class="form-control" id="nisn" name="nisn" type="number" placeholder="nisn"
                                 value="{{ $student->nisn }}" />
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4 col-12">
                             <label class="form-label" for="year">Tahun Masuk</label>
                             <select name="year_id" class="form-select" id="year">
                                 <option disabled selected>--- pilih tahun ---</option>
@@ -44,14 +44,14 @@
                 @endif
                 <div class="row mb-3">
                     <div class="col">
-                        <label class="form-label" for="name">Nama Lengkap</label>
+                        <label class="form-label" for="nama">Nama Lengkap</label>
                         <input
-                            class="form-control @error('name')
+                            class="form-control @error('nama')
                         is-invalid
                     @enderror"
-                            id="name" name="name" type="text" placeholder="nama lengkap"
-                            value="{{ old('name', $student->name) }}" />
-                        @error('name')
+                            id="nama" name="nama" type="text" placeholder="nama lengkap"
+                            value="{{ old('nama', $student->nama) }}" />
+                        @error('nama')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -59,25 +59,25 @@
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <div class="col-4">
+                    <div class="col-md-4 col-12">
                         <label class="form-label" for="nik">NIK</label>
                         <input class="form-control" id="nik" name="nik" type="number" placeholder="nik"
                             value="{{ $student->nik }}" />
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4 col-12">
                         <label class="form-label" for="akta">Akta Kelahiran</label>
                         <input class="form-control" id="akta" name="akta" type="number" placeholder="akta"
                             value="{{ $student->akta }}" />
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4 col-12">
                         <label class="form-label" for="kk">KK</label>
                         <input class="form-control" id="kk" name="kk" type="number" placeholder="kk"
                             value="{{ $student->kk }}" />
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="gender">Jenis Kelamin</label>
-                    <select class="form-select" id="gender" name="gender">
+                    <label class="form-label" for="jenis_kelamin">Jenis Kelamin</label>
+                    <select class="form-select" id="jenis_kelamin" name="jenis_kelamin">
                         <option>---</option>
                         <option value="laki-laki">Laki-Laki</option>
                         <option value="perempuan">Perempuan</option>
@@ -88,13 +88,13 @@
                 <div class="row g-3">
                     <div class="col-6">
                         <div class="mb-3">
-                            <label class="form-label" for="birthplace">Tempat Lahir</label>
+                            <label class="form-label" for="tempat_lahir">Tempat Lahir</label>
                             <input
-                                class="form-control @error('birthplace') is-invalid
+                                class="form-control @error('tempat_lahir') is-invalid
                             @enderror"
-                                id="birthplace" name="birthplace" type="text" placeholder="tempat lahir"
-                                value="{{ $student->birthplace }}" />
-                            @error('birthplace')
+                                id="tempat_lahir" name="tempat_lahir" type="text" placeholder="tempat lahir"
+                                value="{{ $student->tempat_lahir }}" />
+                            @error('tempat_lahir')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -104,12 +104,13 @@
 
                     <div class="col-6">
                         <div class="mb-3">
-                            <label class="form-label " for="birthdate">Tanggal Lahir</label>
-                            <input class="form-control @error('birthdate')
+                            <label class="form-label " for="tanggal_lahir">Tanggal Lahir</label>
+                            <input
+                                class="form-control @error('tanggal_lahir')
                             is-invalid @enderror"
-                                name="birthdate" type="date" id="birthdate" placeholder="Bulan/Hari/Tahun"
-                                value="{{ $student->birthdate }}" />
-                            @error('birthdate')
+                                name="tanggal_lahir" type="date" id="tanggal_lahir" placeholder="Bulan/Hari/Tahun"
+                                value="{{ $student->tanggal_lahir }}" />
+                            @error('tanggal_lahir')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -119,13 +120,13 @@
 
                     <div class="col-12 col-md-4">
                         <div class="mb-3">
-                            <label class="form-label " for="childstatus">Status Anak</label>
+                            <label class="form-label " for="status_anak">Status Anak</label>
                             <input
-                                class="form-control @error('childstatus')
+                                class="form-control @error('status_anak')
                             is-invalid
                             @enderror"
-                                name="childstatus" type="text" id="childstatus" placeholder="Status Anak" />
-                            @error('childstatus')
+                                name="status_anak" type="text" id="status_anak" placeholder="Status Anak" />
+                            @error('status_anak')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -149,13 +150,13 @@
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="mb-3">
-                            <label class="form-label " for="siblings">Saudara</label>
+                            <label class="form-label " for="saudara">Saudara</label>
                             <input
-                                class="form-control @error('siblings')
+                                class="form-control @error('saudara')
                             is-invalid
                             @enderror"
-                                name="siblings" type="text" id="siblings" placeholder="Saudara" />
-                            @error('siblings')
+                                name="saudara" type="text" id="saudara" placeholder="Saudara" />
+                            @error('saudara')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -165,14 +166,14 @@
                 </div>
                 <hr>
                 <div class="mb-3">
-                    <label class="form-label " for="alamatjalan">Alamat Jalan</label>
+                    <label class="form-label " for="alamat">Alamat Jalan</label>
                     <input
-                        class="form-control @error('address')
+                        class="form-control @error('alamat')
                     is-invalid
                     @enderror"
-                        type="text" id="alamatjalan" name="address" placeholder="alamat"
-                        value="{{ $student->address }}" />
-                    @error('address')
+                        type="text" id="alamat" name="alamat" placeholder="alamat"
+                        value="{{ $student->alamat }}" />
+                    @error('alamat')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -210,14 +211,14 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label class="form-label " for="desa/kelurahan">Desa/Kelurahan</label>
+                        <label class="form-label " for="desa_kelurahan">Desa/Kelurahan</label>
                         <input
-                            class="form-control @error('village')
+                            class="form-control @error('desa_kelurahan')
                         is-invalid
                         @enderror"
-                            type="text" id="desa/kelurahan" name="village" placeholder="village"
-                            value="{{ $student->village }}" />
-                        @error('village')
+                            type="text" id="desa_kelurahan" name="desa_kelurahan" placeholder="desa_kelurahan"
+                            value="{{ $student->desa_kelurahan }}" />
+                        @error('desa_kelurahan')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -226,50 +227,50 @@
                     <div class="col-md-6">
                         <label class="form-label" for="kecamatan">Kecamatan</label>
                         <input
-                            class="form-control  @error('subdistrict')
+                            class="form-control  @error('kecamatan')
                         is-invalid
                         @enderror"
-                            type="text" id="kecamatan" name="subdistrict" placeholder="subdistrict"
+                            type="text" id="kecamatan" name="kecamatan" placeholder="kecamatan"
                             value="{{ $student->sundistrict }}" />
-                        @error('subdistrict')
+                        @error('kecamatan')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
                     <div class="col-md-4">
-                        <label class="form-label" for="postal_code">Kode Pos</label>
+                        <label class="form-label" for="kode_pos">Kode Pos</label>
                         <input
-                            class="form-control  @error('postal_code')
+                            class="form-control  @error('kode_pos')
                         is-invalid
                         @enderror"
-                            type="text" id="postal_code" name="postal_code" placeholder="postal_code"
+                            type="text" id="kode_pos" name="kode_pos" placeholder="kode_pos"
                             value="{{ $student->sundistrict }}" />
-                        @error('postal_code')
+                        @error('kode_pos')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
                     <div class="col-md-4">
-                        <label class="form-label" for="kabupaten/kota">Kabupaten / Kota</label>
+                        <label class="form-label" for="kota_kabupaten">Kabupaten / Kota</label>
                         <input
-                            class="form-control @error('city')
+                            class="form-control @error('kota_kabupaten')
                         is-invalid
                         @enderror"
-                            type="text" id="kabupaten/kota" name="city" placeholder="city"
-                            value="{{ $student->city }}" />
-                        @error('city')
+                            type="text" id="kota_kabupaten" name="kota_kabupaten" placeholder="kota_kabupaten"
+                            value="{{ $student->kota_kabupaten }}" />
+                        @error('kota_kabupaten')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
                     <div class="col-md-4">
-                        <label class="form-label " for="province">Provinsi</label>
-                        <input class="form-control @error('province') is-invalid @enderror" type="text"
-                            id="province" name="province" placeholder="province" value="{{ $student->province }}" />
-                        @error('province')
+                        <label class="form-label " for="provinsi">Provinsi</label>
+                        <input class="form-control @error('provinsi') is-invalid @enderror" type="text"
+                            id="provinsi" name="provinsi" placeholder="provinsi" value="{{ $student->provinsi }}" />
+                        @error('provinsi')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -302,40 +303,42 @@
                 <hr>
                 <div class="row">
                     <div class="col-md-6 col-12 mb-3">
-                        <label class="form-label" for="height">Tinggi</label>
-                        <input class="form-control @error('height') is-invalid @enderror" type="text" id="height"
-                            name="height" placeholder="height" value="{{ $student->height }}" />
-                        @error('height')
+                        <label class="form-label" for="tinggi">Tinggi</label>
+                        <input class="form-control @error('tinggi') is-invalid @enderror" type="text" id="tinggi"
+                            name="tinggi" placeholder="tinggi" value="{{ $student->tinggi }}" />
+                        @error('tinggi')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
                     <div class="col-md-6 col-12 mb-3">
-                        <label class="form-label" for="weight">Berat</label>
-                        <input class="form-control @error('weight') is-invalid @enderror" type="text" id="weight"
-                            name="weight" placeholder="weight" value="{{ $student->weight }}" />
-                        @error('weight')
+                        <label class="form-label" for="berat">Berat</label>
+                        <input class="form-control @error('berat') is-invalid @enderror" type="text" id="berat"
+                            name="berat" placeholder="berat" value="{{ $student->berat }}" />
+                        @error('berat')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
                     <div class="col-md-6 col-12 mb-3">
-                        <label class="form-label" for="blood">Golongan Darah</label>
-                        <input class="form-control @error('blood') is-invalid @enderror" type="text" id="blood"
-                            name="blood" placeholder="blood" value="{{ $student->blood }}" />
-                        @error('blood')
+                        <label class="form-label" for="golongan_darah">Golongan Darah</label>
+                        <input class="form-control @error('golongan_darah') is-invalid @enderror" type="text"
+                            id="golongan_darah" name="golongan_darah" placeholder="golongan_darah"
+                            value="{{ $student->golongan_darah }}" />
+                        @error('golongan_darah')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
                     <div class="col-md-6 col-12 mb-3">
-                        <label class="form-label" for="medical">Riwayat penyakit</label>
-                        <input class="form-control @error('medical') is-invalid @enderror" type="text" id="medical"
-                            name="medical" placeholder="medical" value="{{ $student->medical }}" />
-                        @error('medical')
+                        <label class="form-label" for="riwayat_kesehatan">Riwayat penyakit</label>
+                        <input class="form-control @error('riwayat_kesehatan') is-invalid @enderror" type="text"
+                            id="riwayat_kesehatan" name="riwayat_kesehatan" placeholder="riwayat_kesehatan"
+                            value="{{ $student->riwayat_kesehatan }}" />
+                        @error('riwayat_kesehatan')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -345,14 +348,14 @@
                 <hr>
                 <div class="row">
                     <div class="col-12 col-md-6 mb-3">
-                        <label class="form-label" for="living">Tinggal Bersama</label>
+                        <label class="form-label" for="tinggal_bersama">Tinggal Bersama</label>
                         <input
-                            class="form-control @error('living')
+                            class="form-control @error('tinggal_bersama')
                     is-invalid
                     @enderror"
-                            type="text" id="living" name="living" placeholder="Tinggal Bersama"
-                            value="{{ $student->living }}" />
-                        @error('living')
+                            type="text" id="tinggal_bersama" name="tinggal_bersama" placeholder="Tinggal Bersama"
+                            value="{{ $student->tinggal_bersama }}" />
+                        @error('tinggal_bersama')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -360,13 +363,13 @@
                     </div>
 
                     <div class="col-md-6 col-12 mb-3">
-                        <label class="form-label" for="religion">Agama</label>
+                        <label class="form-label" for="agama">Agama</label>
                         <input
-                            class="form-control @error('religion')
+                            class="form-control @error('agama')
                     is-invalid
                     @enderror"
-                            type="text" id="religion" name="religion" placeholder="Agama" />
-                        @error('religion')
+                            type="text" id="agama" name="agama" placeholder="Agama" />
+                        @error('agama')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -374,13 +377,13 @@
                     </div>
 
                     <div class="col-md-6 col-12 mb-3">
-                        <label class="form-label" for="citizenship">Kewarganegaraan</label>
+                        <label class="form-label" for="kewarganegaraan">Kewarganegaraan</label>
                         <input
-                            class="form-control @error('citizenship')
+                            class="form-control @error('kewarganegaraan')
                     is-invalid
                     @enderror"
-                            type="text" id="citizenship" name="citizenship" placeholder="Kewarganegaraan" />
-                        @error('citizenship')
+                            type="text" id="kewarganegaraan" name="kewarganegaraan" placeholder="Kewarganegaraan" />
+                        @error('kewarganegaraan')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -388,13 +391,13 @@
                     </div>
 
                     <div class="col-md-6 col-12 mb-3">
-                        <label class="form-label" for="language">Bahasa sehari-hari</label>
+                        <label class="form-label" for="bahasa">Bahasa sehari-hari</label>
                         <input
-                            class="form-control @error('language')
+                            class="form-control @error('bahasa')
                     is-invalid
                     @enderror"
-                            type="text" id="language" name="language" placeholder="Bahasa sehari-hari" />
-                        @error('language')
+                            type="text" id="bahasa" name="bahasa" placeholder="Bahasa sehari-hari" />
+                        @error('bahasa')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>

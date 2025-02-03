@@ -114,7 +114,7 @@ class StudentController extends Controller
         // update username
         $id = Auth::user()->id;
         $user = User::where('id', $id)->first()->update([
-            'name' => $request->name,
+            'name' => $request->nama,
         ]);
         return redirect()->route('biodata.index');
     }
