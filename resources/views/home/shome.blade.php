@@ -74,7 +74,7 @@
                     <tbody>
                         <tr>
                             <td>Tempat, Tanggal Lahir</td>
-                            <td>: {{ $student->birthplace . ', ' . $student->birthdate ?? 'belum ditentukan' }}</td>
+                            <td>: {{ $student->tempat_lahir . ', ' . $student->tanggal_lahir ?? 'belum ditentukan' }}</td>
                         </tr>
                         <tr>
                             <td>NIS - NISN</td>

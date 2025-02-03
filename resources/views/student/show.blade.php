@@ -32,10 +32,10 @@
                     <div class="text-end mb-3">
                         <small>
                             <i>Data Siswa diperbarui pada
-                                {{ Carbon\Carbon::parse($student->updated_at)->isoFormat('DD MMM YYYY') ?? 'Belum ada data' }}
+                                {{ isset($student->updated_at) ? Carbon\Carbon::parse($student->studentparents->updated_at)->isoFormat('DD MMM YYYY') : '(belum ada data)' }}
                             </i><br>
                             <i>Data Orang Tua/Wali diperbarui pada
-                                {{ Carbon\Carbon::parse($student->studentparents->updated_at)->isoFormat('DD MMM YYYY') ?? 'Belum ada data' }}
+                                {{ isset($student->studentparents->updated_at) ? Carbon\Carbon::parse($student->studentparents->updated_at)->isoFormat('DD MMM YYYY') : '(belum ada data)' }}
                             </i>
                         </small>
                     </div>
