@@ -41,9 +41,9 @@ class StudentParentController extends Controller
         $user = Auth::user();
 
         if ($user->hasRole('admin')) {
-            return redirect()->route('student.show', $id);
+            return redirect()->route('student.show', $id)->withInput(['tab' => 'ortu']);
         } elseif ($user->hasRole('siswa')) {
-            return redirect()->route('biodata.index');
+            return redirect()->route('biodata.index')->withInput(['tab' => 'ortu']);
         }
     }
 

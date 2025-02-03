@@ -6,8 +6,8 @@
 
     @if (($student->address == null) | ($student->rt == null) | ($student->village == null))
         <div class="alert alert-danger alert-dismissible fade show py-2" role="alert">
-            <p class="m-0">Identitas anda belum lengkap!</p>
-            <a href="{{ route('biodata.index') }}" class="btn btn-dark btn-sm ms-md-2">lihat biodata</a>
+            <p class="m-0">Identitas anda belum lengkap! <a href="{{ route('biodata.index') }}"
+                    class="btn btn-dark btn-sm ms-md-2">lihat biodata</a></p>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
@@ -19,18 +19,6 @@
             Siswa SDIT Harapan Umat Jember
         </p>
     </div>
-
-    {{-- <div class="rounded text-center mb-3">
-        <div class="row">
-            <div class="col-12 col-md-12 bg-primary p-2">
-                <a href="{{ route('biodata.index') }}" class="nav-link btn btn-outline text-white">
-                    <i class="bi bi-person fs-2"></i>
-                    <span class="d-block">Profil Biodata Siswa</span>
-                </a>
-            </div>
-        </div>
-    </div> --}}
-
     <div class="card p-3">
         <p class="fs-4 text-center pt-3 mb-0">Ringkasan Profil Pengguna</p>
         <hr>
@@ -38,8 +26,9 @@
             <div class="col-12 col-md-5 p-3 d-flex flex-column justify-content-center align-items-center">
                 <div class="text-center">
                     @if (is_null($student->documents->where('type', 'profil')->first()))
-                        <i class="bi bi-person-circle imgs "></i><br>
-                        <a class="btn btn-sm btn-primary" href="{{ route('uploadfoto', $student->id) }}">upload foto</a>
+                        <i class="bi bi-person-circle imgs"></i>
+                        {{-- <a class="btn btn-sm btn-primary d-block" href="{{ route('uploadfoto', $student->id) }}">upload
+                            foto</a> --}}
                     @else
                         <img class="profil mb-3"
                             src="{{ asset('storage/img-document/' . $student->documents->where('type', 'profil')->first()->file) }}"
@@ -49,7 +38,7 @@
                             <a href="{{ route('viewfoto', $student->documents->where('type', 'profil')->first()->id) }}"
                                 class="btn btn-sm btn-primary">lihat foto</a>
 
-                            <form onsubmit="return confirm('Apakah anda yakin untuk menghapus data ?');"
+                            {{-- <form onsubmit="return confirm('Apakah anda yakin untuk menghapus data ?');"
                                 action="{{ route('deletefoto', $student->documents->where('type', 'profil')->first()->id) }}"
                                 method="post" class="d-inline">
                                 @csrf
@@ -57,17 +46,15 @@
                                 <button type="submit" class="btn btn-danger btn-sm">
                                     <i class="bi bi-trash3"></i>
                                 </button>
-                            </form>
+                            </form> --}}
                         </div>
                     @endif
                 </div>
 
                 <div class="mt-3">
-                    <table class="table align-middle">
+                    <p class="fs-5 text-center mb-0">{{ $student->nama ?? 'belum ditentukan' }}</p>
+                    <table class="table align-middle table-sm mb-0">
                         <tbody>
-                            <tr>
-                                <td colspan="2" class="fs-5">{{ $student->name ?? 'belum ditentukan' }}</td>
-                            </tr>
                             <tr>
                                 <td>Status</td>
                                 <td>: {{ $student->status_siswa == 'aktif' ? 'Aktif' : 'Lulus' }}
@@ -75,8 +62,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Kelas</td>
-                                <td>: {{ $student->group->kelas ?? 'belum ditentukan' }} </td>
+                                <td colspan="2"> {{ $student->group->kelas ?? 'kelas belum ditentukan' }} </td>
                             </tr>
                         </tbody>
                     </table>

@@ -8,9 +8,7 @@
             <a href="{{ url()->previous() }}" class="btn btn-primary btn-sm">kembali</a>
             <hr>
             <div class="text-center">
-                <img class="img-fluid"
-                    src="{{ asset('storage/img-document/' . $document->where('type', 'profil')->first()->file) }}"
-                    alt="img">
+                <img class="img-fluid" src="{{ asset('storage/img-document/' . $document->file) }}" alt="img">
             </div>
         </div>
     </div>

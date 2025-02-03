@@ -79,8 +79,8 @@
                     <label class="form-label" for="jenis_kelamin">Jenis Kelamin</label>
                     <select class="form-select" id="jenis_kelamin" name="jenis_kelamin">
                         <option>---</option>
-                        <option value="laki-laki">Laki-Laki</option>
-                        <option value="perempuan">Perempuan</option>
+                        <option value="L">Laki-Laki</option>
+                        <option value="P">Perempuan</option>
 
                     </select>
                 </div>
@@ -125,7 +125,8 @@
                                 class="form-control @error('status_anak')
                             is-invalid
                             @enderror"
-                                name="status_anak" type="text" id="status_anak" placeholder="Status Anak" />
+                                name="status_anak" type="text" id="status_anak" placeholder="Status Anak"
+                                value="{{ $student->status_anak }}" />
                             @error('status_anak')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -140,7 +141,8 @@
                                 class="form-control @error('anak_ke')
                             is-invalid
                             @enderror"
-                                name="anak_ke" type="text" id="anak_ke" placeholder="Status Anak" />
+                                name="anak_ke" type="text" id="anak_ke" placeholder="Anak ke"
+                                value="{{ $student->anak_ke }}" />
                             @error('anak_ke')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -155,7 +157,8 @@
                                 class="form-control @error('saudara')
                             is-invalid
                             @enderror"
-                                name="saudara" type="text" id="saudara" placeholder="Saudara" />
+                                name="saudara" type="text" id="saudara" placeholder="Saudara"
+                                value="{{ $student->saudara }}" />
                             @error('saudara')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -181,7 +184,7 @@
                 </div>
 
                 <div class="row g-3 mb-3">
-                    <div class="col-md-6">
+                    <div class="col-6 ">
                         <label class="form-label" for="rt">RT </label>
                         <input
                             class="form-control @error('rt')
@@ -195,7 +198,7 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-6">
                         <label class="form-label " for="rw">RW</label>
                         <input
                             class="form-control @error('rw')
@@ -238,21 +241,7 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="col-md-4">
-                        <label class="form-label" for="kode_pos">Kode Pos</label>
-                        <input
-                            class="form-control  @error('kode_pos')
-                        is-invalid
-                        @enderror"
-                            type="text" id="kode_pos" name="kode_pos" placeholder="kode_pos"
-                            value="{{ $student->sundistrict }}" />
-                        @error('kode_pos')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label class="form-label" for="kota_kabupaten">Kabupaten / Kota</label>
                         <input
                             class="form-control @error('kota_kabupaten')
@@ -266,7 +255,7 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label class="form-label " for="provinsi">Provinsi</label>
                         <input class="form-control @error('provinsi') is-invalid @enderror" type="text"
                             id="provinsi" name="provinsi" placeholder="provinsi" value="{{ $student->provinsi }}" />
@@ -276,28 +265,59 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="border rounded">
-                        <div class="col">
-                            <label class="form-label " for="lintang">Garis Lintang</label>
-                            <input class="form-control @error('lintang') is-invalid @enderror" type="text"
-                                id="lintang" name="lintang" placeholder="lintang" value="{{ $student->lintang }}" />
-                            @error('lintang')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
+                    <div class="col-md-6">
+                        <label class="form-label" for="kode_pos">Kode Pos</label>
+                        <input
+                            class="form-control  @error('kode_pos')
+                        is-invalid
+                        @enderror"
+                            type="text" id="kode_pos" name="kode_pos" placeholder="kode_pos"
+                            value="{{ $student->kode_pos }}" />
+                        @error('kode_pos')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" for="jarak_rumah">Jarak Rumah</label>
+                        <input
+                            class="form-control  @error('jarak_rumah')
+                        is-invalid
+                        @enderror"
+                            type="text" id="jarak_rumah" name="jarak_rumah" placeholder="Jarak rumah"
+                            value="{{ $student->jarak_rumah }}" />
+                        @error('jarak_rumah')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="border rounded border-2">
+                        <div class="row mt-2">
+                            <div class="col-md-6">
+                                <label class="form-label " for="lintang">Garis Lintang</label>
+                                <input class="form-control @error('lintang') is-invalid @enderror" type="text"
+                                    id="lintang" name="lintang" placeholder="lintang"
+                                    value="{{ $student->lintang }}" />
+                                @error('lintang')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label " for="bujur">Garis Bujur</label>
+                                <input class="form-control @error('bujur') is-invalid @enderror" type="text"
+                                    id="bujur" name="bujur" placeholder="bujur" value="{{ $student->bujur }}" />
+                                @error('bujur')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <small class="mt-2 mb-2">jika tidak tahu bisa dikosongi atau beri tanda "-"</small>
                         </div>
-                        <div class="col">
-                            <label class="form-label " for="bujur">Garis Bujur</label>
-                            <input class="form-control @error('bujur') is-invalid @enderror" type="text"
-                                id="bujur" name="bujur" placeholder="bujur" value="{{ $student->bujur }}" />
-                            @error('bujur')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <small>jika tidak tahu bisa dikosongi atau beri tanda "-"</small>
                     </div>
                 </div>
                 <hr>
@@ -334,11 +354,11 @@
                         @enderror
                     </div>
                     <div class="col-md-6 col-12 mb-3">
-                        <label class="form-label" for="riwayat_kesehatan">Riwayat penyakit</label>
-                        <input class="form-control @error('riwayat_kesehatan') is-invalid @enderror" type="text"
-                            id="riwayat_kesehatan" name="riwayat_kesehatan" placeholder="riwayat_kesehatan"
-                            value="{{ $student->riwayat_kesehatan }}" />
-                        @error('riwayat_kesehatan')
+                        <label class="form-label" for="riwayat_penyakit">Riwayat penyakit</label>
+                        <input class="form-control @error('riwayat_penyakit') is-invalid @enderror" type="text"
+                            id="riwayat_penyakit" name="riwayat_penyakit" placeholder="riwayat_penyakit"
+                            value="{{ $student->riwayat_penyakit }}" />
+                        @error('riwayat_penyakit')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -368,7 +388,8 @@
                             class="form-control @error('agama')
                     is-invalid
                     @enderror"
-                            type="text" id="agama" name="agama" placeholder="Agama" />
+                            type="text" id="agama" name="agama" placeholder="Agama"
+                            value="{{ $student->agama }}" />
                         @error('agama')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -382,7 +403,8 @@
                             class="form-control @error('kewarganegaraan')
                     is-invalid
                     @enderror"
-                            type="text" id="kewarganegaraan" name="kewarganegaraan" placeholder="Kewarganegaraan" />
+                            type="text" id="kewarganegaraan" name="kewarganegaraan" placeholder="Kewarganegaraan"
+                            value="{{ $student->kewarganegaraan }}" />
                         @error('kewarganegaraan')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -396,7 +418,8 @@
                             class="form-control @error('bahasa')
                     is-invalid
                     @enderror"
-                            type="text" id="bahasa" name="bahasa" placeholder="Bahasa sehari-hari" />
+                            type="text" id="bahasa" name="bahasa" placeholder="Bahasa sehari-hari"
+                            value="{{ $student->bahasa }}" />
                         @error('bahasa')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -405,7 +428,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="action submit btn btn-success float-end w-25">
+                <button type="submit" class="action submit btn btn-success float-end w-50">
                     Simpan Data
                 </button>
         </form>

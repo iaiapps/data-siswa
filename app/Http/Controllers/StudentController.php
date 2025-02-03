@@ -116,6 +116,6 @@ class StudentController extends Controller
         $user = User::where('id', $id)->first()->update([
             'name' => $request->nama,
         ]);
-        return redirect()->route('biodata.index');
+        return redirect()->route('biodata.index')->with('success', 'Berhasil menyimpan data');
     }
 }

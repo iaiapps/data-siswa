@@ -3,26 +3,43 @@
 @section('title', 'Data Induk Siswa')
 @section('content')
     @if (
-        ($student->address == null) |
+        ($student->alamat == null) |
             ($student->rt == null) |
-            ($student->village == null) |
-            ($student->height == null) |
-            ($student->siblings == null) |
-            ($student->province == null))
+            ($student->desa_kelurahan == null) |
+            ($student->tinggi == null) |
+            ($student->saudara == null) |
+            ($student->provinsi == null))
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             Ada data yang belum lengkap! <button type="button" class="btn-close" data-bs-dismiss="alert"
                 aria-label="Close"></button></div>
     @endif
 
+    @if (session('success'))
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ session('success') }}<button type="button" class="btn-close" data-bs-dismiss="alert"
+                aria-label="Close"></button></div>
+    @endif
+
     <div class="card mb-3">
         <div class="card-body">
-            <p class="fs-4 text-center mb-0">Data Siswa</p>
+            <p class="fs-4 text-center mb-0">Rincian Data Siswa dan Orang Tua/Wali</p>
         </div>
     </div>
     <div class="row gx-3">
         <div class="col-md-4 mb-3">
             <div class="card">
                 <div class="card-body">
+                    <div class="text-end mb-3">
+                        <small>
+                            <i>Data Siswa diperbarui pada
+                                {{ Carbon\Carbon::parse($student->updated_at)->isoFormat('DD MMM YYYY') }}
+                            </i><br>
+                            <i>Data Orang Tua/Wali diperbarui pada
+                                {{ Carbon\Carbon::parse($student->studentparents->updated_at)->isoFormat('DD MMM YYYY') }}
+                            </i>
+                        </small>
+                    </div>
+                    <hr>
                     <div class="d-flex flex-column align-items-center ">
                         <div class="text-center">
                             @if (is_null($student->documents->where('type', 'profil')->first()))
@@ -73,15 +90,15 @@
                                         <td>: {{ $student->year->year ?? 'belum ada data' }}</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">{{ $student->group->kelas ?? 'belum ada data' }}</td>
+                                        <td colspan="2">{{ $student->group->kelas ?? 'kelas belum ditentukan' }}</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    <p class="text-center kecil mb-0">
+                    <small class="text-center d-block mb-0">
                         *berdasarkan Dapodik SDIT Harapan Umat Jember
-                    </p>
+                    </small>
                 </div>
             </div>
             <div class="card mt-3">
@@ -97,7 +114,7 @@
         <div class="col-md-8">
             <div class="card mb-3">
                 <div class="card-body">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <ul class="nav nav-underline nav-fill" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <a href="#siswa" class="nav-link active" id="data-siswa-tab" data-bs-toggle="tab"
                                 data-bs-target="#data-siswa" type="button" role="tab" aria-controls="data-siswa"
@@ -107,8 +124,7 @@
                         <li class="nav-item" role="presentation">
                             <a href="#ortu" class="nav-link" id="data-ortu-tab" data-bs-toggle="tab"
                                 data-bs-target="#data-ortu" type="button" role="tab" aria-controls="data-ortu"
-                                aria-selected="false">Data Orang Tua
-                                dan Wali
+                                aria-selected="false">Data Orang Tua/Wali
                             </a>
                         </li>
                         {{-- <li class="nav-item" role="presentation">
@@ -163,6 +179,10 @@
                                     <tr>
                                         <td>Kode Pos</td>
                                         <td> : {{ $student->kode_pos }} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jarak Rumah ke Sekolah</td>
+                                        <td> : {{ $student->jarak_rumah }} </td>
                                     </tr>
                                     <tr>
                                         <td>Agama</td>
@@ -227,8 +247,8 @@
                                                 <td>: {{ $student->golongan_darah }}</td>
                                             </tr>
                                             <tr>
-                                                <td>Riwayat Kesehatan</td>
-                                                <td>: {{ $student->riwayat_kesehatan }}</td>
+                                                <td>Riwayat Penyakit</td>
+                                                <td>: {{ $student->riwayat_penyakit }}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -251,13 +271,13 @@
                             </div>
                         </div>
                     @else
-                        <div class="card mb-3">
+                        <div class="card mb-3 clearfix">
+                            <div class="text-end p-2">
+                                <a href="{{ route('studentparent.edit', $student->studentparents->id) }}"
+                                    class="btn btn-primary btn-sm">Edit Data</a>
+                            </div>
                             <div class="card-body">
-                                <p class="fs-4 text-center mb-3">Data Orang Tua/Wali <a
-                                        href="{{ route('studentparent.edit', $student->studentparents->id) }}"
-                                        class="btn btn-primary btn-sm">Edit
-                                        Data</a>
-                                </p>
+                                <p class="fs-4 text-center mb-3">Data Orang Tua </p>
                                 <div class="row gx-3">
                                     <div class="col-md-6 col-12">
                                         <table id="table" class="table align-middle" style="width: 100%">
@@ -341,6 +361,7 @@
                         </div>
                         <div class="card">
                             <div class="card-body">
+                                <p class="fs-4 text-center mb-3">Data Wali </p>
                                 <div class="row">
                                     <div class="col-12">
                                         <table id="table" class="table align-middle" style="width: 100%">
@@ -368,7 +389,6 @@
                                                     <td>{{ $student->studentparents->pendidikan_wali }}
                                                     </td>
                                                 </tr>
-
                                                 <tr>
                                                     <td>Pekerjaan Wali</td>
                                                     <td>{{ $student->studentparents->pekerjaan_wali }}
@@ -523,11 +543,11 @@
             margin: 0
         }
 
-        @media (max-width: 800px) {
-            body {
-                background-color: rgb(9, 171, 225) !important;
-            }
+        small {
+            font-size: 12px;
+        }
 
+        @media (max-width: 800px) {
             .profil {
                 width: 120px;
             }

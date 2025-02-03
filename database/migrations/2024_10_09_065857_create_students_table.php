@@ -55,7 +55,7 @@ return new class extends Migration
             $table->string('tinggi')->nullable();
             $table->string('berat')->nullable();
             $table->string('golongan_darah')->nullable();
-            $table->string('riwayat_kesehatan')->nullable();
+            $table->string('riwayat_penyakit')->nullable();
 
             $table->timestamps();
         });

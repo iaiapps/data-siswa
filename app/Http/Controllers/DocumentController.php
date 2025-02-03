@@ -64,7 +64,7 @@ class DocumentController extends Controller
         if ($role->hasRole('admin')) {
             return redirect()->route('student.show', $student_id)->with('success', 'Data telah ditambah');
         } elseif ($role->hasRole('siswa')) {
-            return redirect()->route('home')->with('success', 'Data telah ditambah');
+            return redirect()->route('biodata.index')->with('success', 'Data telah ditambah');
         }
     }
 
