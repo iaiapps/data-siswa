@@ -17,7 +17,7 @@
             @endif
             <div class="card mt-2">
                 <div class="card-header text-center">{{ __('Login Siswa') }}</div>
-                <div class="card-body mx-4">
+                <div class="card-body mx-1">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="mb-3">
@@ -54,7 +54,7 @@
             </div>
 
             <p class="small px-3 mt-4">
-                NB: Jika tidak mengetahui username dan password login, silahkan hubungi wali kelas masing-masing
+                NB: Jika tidak mengetahui email dan kata sandi, silahkan hubungi wali kelas masing-masing
             </p>
         </div>
         <!-- ini kanan -->

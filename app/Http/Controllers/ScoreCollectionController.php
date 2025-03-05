@@ -14,7 +14,7 @@ class ScoreCollectionController extends Controller
      */
     public function index()
     {
-        $students = Student::where('status', 'aktif')->get();
+        $students = Student::where('status_siswa', 'aktif')->get();
         $subjects = Subject::all();
         return view('admin.student.scorecollection.index', compact('students', 'subjects'));
     }

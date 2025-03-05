@@ -24,7 +24,7 @@
                     @foreach ($students as $student)
                         <tr>
                             <td>{{ $student->id }}</td>
-                            <td>{{ $student->name }}</td>
+                            <td>{{ $student->nama }}</td>
                             <td>{{ $student->group->kelas ?? 'belum ditentukan' }}</td>
                             @foreach ($subjects as $subject)
                                 @if (!$student->scorecollection->where('subject_id', $subject->id)->isEmpty())
